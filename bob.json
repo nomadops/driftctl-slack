@@ -1,48 +1,12 @@
 {
 	"summary": {
-		"total_resources": 146,
+		"total_resources": 109,
 		"total_changed": 0,
 		"total_unmanaged": 25,
 		"total_missing": 1,
-		"total_managed": 120
+		"total_managed": 83
 	},
 	"managed": [
-		{
-			"id": "athens",
-			"type": "aws_ecr_repository",
-			"source": {
-				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/_global/ecr/terraform.tfstate",
-				"namespace": "",
-				"internal_name": "name"
-			}
-		},
-		{
-			"id": "atlantis",
-			"type": "aws_ecr_repository",
-			"source": {
-				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/_global/ecr/terraform.tfstate",
-				"namespace": "",
-				"internal_name": "name"
-			}
-		},
-		{
-			"id": "elasticsearch",
-			"type": "aws_ecr_repository",
-			"source": {
-				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/_global/ecr/terraform.tfstate",
-				"namespace": "",
-				"internal_name": "name"
-			}
-		},
-		{
-			"id": "logshell-agent",
-			"type": "aws_ecr_repository",
-			"source": {
-				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/_global/ecr/terraform.tfstate",
-				"namespace": "",
-				"internal_name": "name"
-			}
-		},
 		{
 			"id": "logshell-cli",
 			"type": "aws_ecr_repository",
@@ -72,6 +36,42 @@
 		},
 		{
 			"id": "route53-microk8s-lambda",
+			"type": "aws_ecr_repository",
+			"source": {
+				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/_global/ecr/terraform.tfstate",
+				"namespace": "",
+				"internal_name": "name"
+			}
+		},
+		{
+			"id": "athens",
+			"type": "aws_ecr_repository",
+			"source": {
+				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/_global/ecr/terraform.tfstate",
+				"namespace": "",
+				"internal_name": "name"
+			}
+		},
+		{
+			"id": "atlantis",
+			"type": "aws_ecr_repository",
+			"source": {
+				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/_global/ecr/terraform.tfstate",
+				"namespace": "",
+				"internal_name": "name"
+			}
+		},
+		{
+			"id": "elasticsearch",
+			"type": "aws_ecr_repository",
+			"source": {
+				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/_global/ecr/terraform.tfstate",
+				"namespace": "",
+				"internal_name": "name"
+			}
+		},
+		{
+			"id": "logshell-agent",
 			"type": "aws_ecr_repository",
 			"source": {
 				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/_global/ecr/terraform.tfstate",
@@ -142,241 +142,12 @@
 			}
 		},
 		{
-			"id": "sgrule-3154173133",
-			"type": "aws_security_group_rule",
-			"source": {
-				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/eu-west-1/dev/ci/atlantis/terraform.tfstate",
-				"namespace": "module.atlantis.module.alb_http_sg.module.sg",
-				"internal_name": "ingress_with_self"
-			}
-		},
-		{
-			"id": "sgrule-3764422544",
-			"type": "aws_security_group_rule"
-		},
-		{
-			"id": "sgrule-3493126614",
-			"type": "aws_security_group_rule"
-		},
-		{
-			"id": "sgrule-1858528536",
-			"type": "aws_security_group_rule"
-		},
-		{
-			"id": "sgrule-2290483488",
-			"type": "aws_security_group_rule"
-		},
-		{
-			"id": "sgrule-1191165248",
-			"type": "aws_security_group_rule"
-		},
-		{
-			"id": "sgrule-3584630475",
-			"type": "aws_security_group_rule"
-		},
-		{
-			"id": "sgrule-2226718446",
-			"type": "aws_security_group_rule"
-		},
-		{
-			"id": "sgrule-2442015345",
-			"type": "aws_security_group_rule"
-		},
-		{
-			"id": "sgrule-1001082525",
-			"type": "aws_security_group_rule"
-		},
-		{
-			"id": "sgrule-258767017",
-			"type": "aws_security_group_rule",
-			"source": {
-				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/eu-west-1/dev/ci/atlantis/terraform.tfstate",
-				"namespace": "module.atlantis.module.atlantis_sg",
-				"internal_name": "ingress_with_source_security_group_id"
-			}
-		},
-		{
-			"id": "sgrule-2160106710",
-			"type": "aws_security_group_rule"
-		},
-		{
-			"id": "sgrule-1018738623",
-			"type": "aws_security_group_rule"
-		},
-		{
-			"id": "sgrule-3120174850",
-			"type": "aws_security_group_rule"
-		},
-		{
-			"id": "sgrule-3114726849",
-			"type": "aws_security_group_rule"
-		},
-		{
-			"id": "sgrule-3142219976",
-			"type": "aws_security_group_rule"
-		},
-		{
-			"id": "sgrule-43379921",
-			"type": "aws_security_group_rule"
-		},
-		{
-			"id": "sgrule-1730656313",
-			"type": "aws_security_group_rule"
-		},
-		{
-			"id": "sgrule-2400813204",
-			"type": "aws_security_group_rule",
-			"source": {
-				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/eu-west-1/dev/ci/atlantis/terraform.tfstate",
-				"namespace": "module.atlantis.module.alb_https_sg.module.sg",
-				"internal_name": "ingress_with_self"
-			}
-		},
-		{
-			"id": "sg-0f7ba99aee2a87467",
-			"type": "aws_security_group",
-			"source": {
-				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/eu-west-1/dev/ci/atlantis/terraform.tfstate",
-				"namespace": "module.atlantis.module.alb_http_sg.module.sg",
-				"internal_name": "this_name_prefix"
-			}
-		},
-		{
-			"id": "sg-059ce38eca326abe8",
-			"type": "aws_security_group",
-			"source": {
-				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/eu-west-1/dev/ci/atlantis/terraform.tfstate",
-				"namespace": "module.atlantis.module.atlantis_sg",
-				"internal_name": "this_name_prefix"
-			}
-		},
-		{
-			"id": "sg-0e72eb22ed2023381",
-			"type": "aws_security_group",
-			"source": {
-				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/eu-west-1/dev/ci/atlantis/terraform.tfstate",
-				"namespace": "module.atlantis.module.alb_https_sg.module.sg",
-				"internal_name": "this_name_prefix"
-			}
-		},
-		{
-			"id": "atlantis-access-logs-366248715104-eu-west-1",
-			"type": "aws_s3_bucket",
-			"source": {
-				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/eu-west-1/dev/ci/atlantis/terraform.tfstate",
-				"namespace": "module.atlantis_access_log_bucket",
-				"internal_name": "this"
-			}
-		},
-		{
-			"id": "atlantis-access-logs-366248715104-eu-west-1",
-			"type": "aws_s3_bucket_policy",
-			"source": {
-				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/eu-west-1/dev/ci/atlantis/terraform.tfstate",
-				"namespace": "module.atlantis_access_log_bucket",
-				"internal_name": "this"
-			}
-		},
-		{
-			"id": "atlantis-ecs_task_execution",
-			"type": "aws_iam_role",
-			"source": {
-				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/eu-west-1/dev/ci/atlantis/terraform.tfstate",
-				"namespace": "module.atlantis",
-				"internal_name": "ecs_task_execution"
-			}
-		},
-		{
-			"id": "atlantis-ecs_task_execution-arn:aws:iam::366248715104:policy/atlantis-ci",
-			"type": "aws_iam_policy_attachment"
-		},
-		{
-			"id": "atlantis-ecs_task_execution:ECSTaskAccessSecretsPolicy",
-			"type": "aws_iam_role_policy",
-			"source": {
-				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/eu-west-1/dev/ci/atlantis/terraform.tfstate",
-				"namespace": "module.atlantis",
-				"internal_name": "ecs_task_access_secrets"
-			}
-		},
-		{
-			"id": "Z05796291WCTOK4GMKH1A_atlantis.dev.logshell.io_A",
-			"type": "aws_route53_record",
-			"source": {
-				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/eu-west-1/dev/ci/atlantis/terraform.tfstate",
-				"namespace": "module.atlantis",
-				"internal_name": "atlantis"
-			}
-		},
-		{
-			"id": "Z05796291WCTOK4GMKH1A__9d6ece4fb7b83e0701b55b7d8368a8ff.atlantis.dev.logshell.io_CNAME",
-			"type": "aws_route53_record",
-			"source": {
-				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/eu-west-1/dev/ci/atlantis/terraform.tfstate",
-				"namespace": "module.atlantis.module.acm",
-				"internal_name": "validation"
-			}
-		},
-		{
-			"id": "dev-athens-logs",
-			"type": "aws_s3_bucket",
-			"source": {
-				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/eu-west-1/dev/data-stores/athens/terraform.tfstate",
-				"namespace": "module.s3_logs_bucket",
-				"internal_name": "this"
-			}
-		},
-		{
 			"id": "athens-dev-dev-athens-cloudtrail-logs",
-			"type": "aws_s3_bucket",
+			"type": "aws_s3_bucket_policy",
 			"source": {
 				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/eu-west-1/dev/data-stores/athens/terraform.tfstate",
 				"namespace": "module.cloudtrail_s3_bucket.module.s3_bucket",
 				"internal_name": "default"
-			}
-		},
-		{
-			"id": "dev-athens",
-			"type": "aws_s3_bucket",
-			"source": {
-				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/eu-west-1/dev/data-stores/athens/terraform.tfstate",
-				"namespace": "module.s3_bucket",
-				"internal_name": "this"
-			}
-		},
-		{
-			"id": "athens-ecs_task_execution-arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy",
-			"type": "aws_iam_policy_attachment"
-		},
-		{
-			"id": "athens-ecs_task_execution-arn:aws:iam::366248715104:policy/athens_policy",
-			"type": "aws_iam_policy_attachment"
-		},
-		{
-			"id": "Z02655141UJWUE4OS75A9_athens.dev.logshell.infra_A",
-			"type": "aws_route53_record",
-			"source": {
-				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/eu-west-1/dev/data-stores/athens/terraform.tfstate",
-				"namespace": "",
-				"internal_name": "athens"
-			}
-		},
-		{
-			"id": "athens-ecs_task_execution",
-			"type": "aws_iam_role",
-			"source": {
-				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/eu-west-1/dev/data-stores/athens/terraform.tfstate",
-				"namespace": "",
-				"internal_name": "ecs_task_execution"
-			}
-		},
-		{
-			"id": "athens-ecs_task_execution:ECSTaskAccessSecretsPolicy",
-			"type": "aws_iam_role_policy",
-			"source": {
-				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/eu-west-1/dev/data-stores/athens/terraform.tfstate",
-				"namespace": "",
-				"internal_name": "ecs_task_access_secrets"
 			}
 		},
 		{
@@ -439,12 +210,39 @@
 			}
 		},
 		{
-			"id": "arn:aws:iam::366248715104:policy/athens_policy",
-			"type": "aws_iam_policy",
+			"id": "athens-ecs_task_execution:ECSTaskAccessSecretsPolicy",
+			"type": "aws_iam_role_policy",
 			"source": {
 				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/eu-west-1/dev/data-stores/athens/terraform.tfstate",
 				"namespace": "",
-				"internal_name": "athens_policy"
+				"internal_name": "ecs_task_access_secrets"
+			}
+		},
+		{
+			"id": "athens-dev-dev-athens-cloudtrail-logs",
+			"type": "aws_s3_bucket",
+			"source": {
+				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/eu-west-1/dev/data-stores/athens/terraform.tfstate",
+				"namespace": "module.cloudtrail_s3_bucket.module.s3_bucket",
+				"internal_name": "default"
+			}
+		},
+		{
+			"id": "dev-athens",
+			"type": "aws_s3_bucket",
+			"source": {
+				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/eu-west-1/dev/data-stores/athens/terraform.tfstate",
+				"namespace": "module.s3_bucket",
+				"internal_name": "this"
+			}
+		},
+		{
+			"id": "dev-athens-logs",
+			"type": "aws_s3_bucket",
+			"source": {
+				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/eu-west-1/dev/data-stores/athens/terraform.tfstate",
+				"namespace": "module.s3_logs_bucket",
+				"internal_name": "this"
 			}
 		},
 		{
@@ -466,12 +264,38 @@
 			}
 		},
 		{
-			"id": "athens-dev-dev-athens-cloudtrail-logs",
-			"type": "aws_s3_bucket_policy",
+			"id": "arn:aws:iam::366248715104:policy/athens_policy",
+			"type": "aws_iam_policy",
 			"source": {
 				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/eu-west-1/dev/data-stores/athens/terraform.tfstate",
-				"namespace": "module.cloudtrail_s3_bucket.module.s3_bucket",
-				"internal_name": "default"
+				"namespace": "",
+				"internal_name": "athens_policy"
+			}
+		},
+		{
+			"id": "Z02655141UJWUE4OS75A9_athens.dev.logshell.infra_A",
+			"type": "aws_route53_record",
+			"source": {
+				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/eu-west-1/dev/data-stores/athens/terraform.tfstate",
+				"namespace": "",
+				"internal_name": "athens"
+			}
+		},
+		{
+			"id": "athens-ecs_task_execution-arn:aws:iam::366248715104:policy/athens_policy",
+			"type": "aws_iam_policy_attachment"
+		},
+		{
+			"id": "athens-ecs_task_execution-arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy",
+			"type": "aws_iam_policy_attachment"
+		},
+		{
+			"id": "athens-ecs_task_execution",
+			"type": "aws_iam_role",
+			"source": {
+				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/eu-west-1/dev/data-stores/athens/terraform.tfstate",
+				"namespace": "",
+				"internal_name": "ecs_task_execution"
 			}
 		},
 		{
@@ -568,78 +392,6 @@
 			}
 		},
 		{
-			"id": "sgrule-3816944257",
-			"type": "aws_security_group_rule",
-			"source": {
-				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/eu-west-1/dev/networking/security-groups/endpoints/terraform.tfstate",
-				"namespace": "",
-				"internal_name": "ingress_with_cidr_blocks"
-			}
-		},
-		{
-			"id": "sgrule-3392004639",
-			"type": "aws_security_group_rule",
-			"source": {
-				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/eu-west-1/dev/networking/security-groups/endpoints/terraform.tfstate",
-				"namespace": "",
-				"internal_name": "ingress_with_cidr_blocks"
-			}
-		},
-		{
-			"id": "sgrule-2593169865",
-			"type": "aws_security_group_rule",
-			"source": {
-				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/eu-west-1/dev/networking/security-groups/endpoints/terraform.tfstate",
-				"namespace": "",
-				"internal_name": "ingress_with_source_security_group_id"
-			}
-		},
-		{
-			"id": "sgrule-1656468515",
-			"type": "aws_security_group_rule",
-			"source": {
-				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/eu-west-1/dev/networking/security-groups/endpoints/terraform.tfstate",
-				"namespace": "",
-				"internal_name": "ingress_with_source_security_group_id"
-			}
-		},
-		{
-			"id": "sgrule-101361238",
-			"type": "aws_security_group_rule",
-			"source": {
-				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/eu-west-1/dev/networking/security-groups/endpoints/terraform.tfstate",
-				"namespace": "",
-				"internal_name": "ingress_rules"
-			}
-		},
-		{
-			"id": "sgrule-662294645",
-			"type": "aws_security_group_rule",
-			"source": {
-				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/eu-west-1/dev/networking/security-groups/endpoints/terraform.tfstate",
-				"namespace": "",
-				"internal_name": "ingress_rules"
-			}
-		},
-		{
-			"id": "sgrule-3179209584",
-			"type": "aws_security_group_rule",
-			"source": {
-				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/eu-west-1/dev/networking/security-groups/endpoints/terraform.tfstate",
-				"namespace": "",
-				"internal_name": "ingress_rules"
-			}
-		},
-		{
-			"id": "sgrule-2550404870",
-			"type": "aws_security_group_rule",
-			"source": {
-				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/eu-west-1/dev/networking/security-groups/endpoints/terraform.tfstate",
-				"namespace": "",
-				"internal_name": "ingress_rules"
-			}
-		},
-		{
 			"id": "sg-05ed897ee3a45dab0",
 			"type": "aws_security_group",
 			"source": {
@@ -649,12 +401,57 @@
 			}
 		},
 		{
-			"id": "vpc-flow-log-role-20211108213719141200000002",
-			"type": "aws_iam_role",
+			"id": "subnet-067411ea57ab1fd05",
+			"type": "aws_subnet",
 			"source": {
 				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/eu-west-1/dev/networking/vpc/terraform.tfstate",
 				"namespace": "module.vpc",
-				"internal_name": "vpc_flow_log_cloudwatch"
+				"internal_name": "private"
+			}
+		},
+		{
+			"id": "subnet-057f1f61197d620ad",
+			"type": "aws_subnet",
+			"source": {
+				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/eu-west-1/dev/networking/vpc/terraform.tfstate",
+				"namespace": "module.vpc",
+				"internal_name": "private"
+			}
+		},
+		{
+			"id": "subnet-027789548830465fc",
+			"type": "aws_subnet",
+			"source": {
+				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/eu-west-1/dev/networking/vpc/terraform.tfstate",
+				"namespace": "module.vpc",
+				"internal_name": "public"
+			}
+		},
+		{
+			"id": "subnet-0411c37a29721e05b",
+			"type": "aws_subnet",
+			"source": {
+				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/eu-west-1/dev/networking/vpc/terraform.tfstate",
+				"namespace": "module.vpc",
+				"internal_name": "public"
+			}
+		},
+		{
+			"id": "subnet-01cfa44d3e4811f2d",
+			"type": "aws_subnet",
+			"source": {
+				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/eu-west-1/dev/networking/vpc/terraform.tfstate",
+				"namespace": "module.vpc",
+				"internal_name": "intra"
+			}
+		},
+		{
+			"id": "subnet-044a53086bb5977c0",
+			"type": "aws_subnet",
+			"source": {
+				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/eu-west-1/dev/networking/vpc/terraform.tfstate",
+				"namespace": "module.vpc",
+				"internal_name": "intra"
 			}
 		},
 		{
@@ -667,26 +464,17 @@
 			}
 		},
 		{
-			"id": "sg-0ab56c1ba939b3313",
-			"type": "aws_default_security_group",
+			"id": "vpc-flow-log-role-20211108213719141200000002",
+			"type": "aws_iam_role",
 			"source": {
 				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/eu-west-1/dev/networking/vpc/terraform.tfstate",
 				"namespace": "module.vpc",
-				"internal_name": "this"
+				"internal_name": "vpc_flow_log_cloudwatch"
 			}
 		},
 		{
-			"id": "rtb-01114b5b6d59921eb",
-			"type": "aws_route_table",
-			"source": {
-				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/eu-west-1/dev/networking/vpc/terraform.tfstate",
-				"namespace": "module.vpc",
-				"internal_name": "private"
-			}
-		},
-		{
-			"id": "rtb-0475c2417dd4c1adb",
-			"type": "aws_route_table",
+			"id": "rtbassoc-0402e46d0ab40295b",
+			"type": "aws_route_table_association",
 			"source": {
 				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/eu-west-1/dev/networking/vpc/terraform.tfstate",
 				"namespace": "module.vpc",
@@ -694,16 +482,16 @@
 			}
 		},
 		{
-			"id": "rtb-0d8266a408839b2eb",
-			"type": "aws_route_table",
+			"id": "rtbassoc-0be09dd2292455d9a",
+			"type": "aws_route_table_association",
 			"source": {
 				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/eu-west-1/dev/networking/vpc/terraform.tfstate",
 				"namespace": "module.vpc",
-				"internal_name": "intra"
+				"internal_name": "public"
 			}
 		},
 		{
-			"id": "rtbassoc-0ac09152b31ee6653",
+			"id": "rtbassoc-0633013ec3d5003c9",
 			"type": "aws_route_table_association",
 			"source": {
 				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/eu-west-1/dev/networking/vpc/terraform.tfstate",
@@ -712,7 +500,7 @@
 			}
 		},
 		{
-			"id": "rtbassoc-0633013ec3d5003c9",
+			"id": "rtbassoc-0ac09152b31ee6653",
 			"type": "aws_route_table_association",
 			"source": {
 				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/eu-west-1/dev/networking/vpc/terraform.tfstate",
@@ -739,8 +527,57 @@
 			}
 		},
 		{
-			"id": "rtbassoc-0402e46d0ab40295b",
-			"type": "aws_route_table_association",
+			"id": "vpc-flow-log-role-20211108213719141200000002-arn:aws:iam::366248715104:policy/vpc-flow-log-to-cloudwatch-20211108213716705600000001",
+			"type": "aws_iam_policy_attachment"
+		},
+		{
+			"id": "arn:aws:iam::366248715104:policy/vpc-flow-log-to-cloudwatch-20211108213716705600000001",
+			"type": "aws_iam_policy",
+			"source": {
+				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/eu-west-1/dev/networking/vpc/terraform.tfstate",
+				"namespace": "module.vpc",
+				"internal_name": "vpc_flow_log_cloudwatch"
+			}
+		},
+		{
+			"id": "sg-0ab56c1ba939b3313",
+			"type": "aws_default_security_group",
+			"source": {
+				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/eu-west-1/dev/networking/vpc/terraform.tfstate",
+				"namespace": "module.vpc",
+				"internal_name": "this"
+			}
+		},
+		{
+			"id": "igw-0e2e3781a4f6bbed3",
+			"type": "aws_internet_gateway",
+			"source": {
+				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/eu-west-1/dev/networking/vpc/terraform.tfstate",
+				"namespace": "module.vpc",
+				"internal_name": "this"
+			}
+		},
+		{
+			"id": "rtb-0d8266a408839b2eb",
+			"type": "aws_route_table",
+			"source": {
+				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/eu-west-1/dev/networking/vpc/terraform.tfstate",
+				"namespace": "module.vpc",
+				"internal_name": "intra"
+			}
+		},
+		{
+			"id": "rtb-01114b5b6d59921eb",
+			"type": "aws_route_table",
+			"source": {
+				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/eu-west-1/dev/networking/vpc/terraform.tfstate",
+				"namespace": "module.vpc",
+				"internal_name": "private"
+			}
+		},
+		{
+			"id": "rtb-0475c2417dd4c1adb",
+			"type": "aws_route_table",
 			"source": {
 				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/eu-west-1/dev/networking/vpc/terraform.tfstate",
 				"namespace": "module.vpc",
@@ -748,12 +585,12 @@
 			}
 		},
 		{
-			"id": "rtbassoc-0be09dd2292455d9a",
-			"type": "aws_route_table_association",
+			"id": "nat-05e4f610a2b64933a",
+			"type": "aws_nat_gateway",
 			"source": {
 				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/eu-west-1/dev/networking/vpc/terraform.tfstate",
 				"namespace": "module.vpc",
-				"internal_name": "public"
+				"internal_name": "this"
 			}
 		},
 		{
@@ -764,10 +601,6 @@
 				"namespace": "module.vpc",
 				"internal_name": "nat"
 			}
-		},
-		{
-			"id": "vpc-flow-log-role-20211108213719141200000002-arn:aws:iam::366248715104:policy/vpc-flow-log-to-cloudwatch-20211108213716705600000001",
-			"type": "aws_iam_policy_attachment"
 		},
 		{
 			"id": "r-rtb-01114b5b6d59921eb1080289494",
@@ -788,87 +621,6 @@
 			}
 		},
 		{
-			"id": "arn:aws:iam::366248715104:policy/vpc-flow-log-to-cloudwatch-20211108213716705600000001",
-			"type": "aws_iam_policy",
-			"source": {
-				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/eu-west-1/dev/networking/vpc/terraform.tfstate",
-				"namespace": "module.vpc",
-				"internal_name": "vpc_flow_log_cloudwatch"
-			}
-		},
-		{
-			"id": "nat-05e4f610a2b64933a",
-			"type": "aws_nat_gateway",
-			"source": {
-				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/eu-west-1/dev/networking/vpc/terraform.tfstate",
-				"namespace": "module.vpc",
-				"internal_name": "this"
-			}
-		},
-		{
-			"id": "igw-0e2e3781a4f6bbed3",
-			"type": "aws_internet_gateway",
-			"source": {
-				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/eu-west-1/dev/networking/vpc/terraform.tfstate",
-				"namespace": "module.vpc",
-				"internal_name": "this"
-			}
-		},
-		{
-			"id": "subnet-027789548830465fc",
-			"type": "aws_subnet",
-			"source": {
-				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/eu-west-1/dev/networking/vpc/terraform.tfstate",
-				"namespace": "module.vpc",
-				"internal_name": "public"
-			}
-		},
-		{
-			"id": "subnet-0411c37a29721e05b",
-			"type": "aws_subnet",
-			"source": {
-				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/eu-west-1/dev/networking/vpc/terraform.tfstate",
-				"namespace": "module.vpc",
-				"internal_name": "public"
-			}
-		},
-		{
-			"id": "subnet-044a53086bb5977c0",
-			"type": "aws_subnet",
-			"source": {
-				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/eu-west-1/dev/networking/vpc/terraform.tfstate",
-				"namespace": "module.vpc",
-				"internal_name": "intra"
-			}
-		},
-		{
-			"id": "subnet-01cfa44d3e4811f2d",
-			"type": "aws_subnet",
-			"source": {
-				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/eu-west-1/dev/networking/vpc/terraform.tfstate",
-				"namespace": "module.vpc",
-				"internal_name": "intra"
-			}
-		},
-		{
-			"id": "subnet-067411ea57ab1fd05",
-			"type": "aws_subnet",
-			"source": {
-				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/eu-west-1/dev/networking/vpc/terraform.tfstate",
-				"namespace": "module.vpc",
-				"internal_name": "private"
-			}
-		},
-		{
-			"id": "subnet-057f1f61197d620ad",
-			"type": "aws_subnet",
-			"source": {
-				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/eu-west-1/dev/networking/vpc/terraform.tfstate",
-				"namespace": "module.vpc",
-				"internal_name": "private"
-			}
-		},
-		{
 			"id": "arn:aws:iam::366248715104:policy/atlantis-ci",
 			"type": "aws_iam_policy",
 			"source": {
@@ -878,6 +630,18 @@
 			}
 		},
 		{
+			"id": "devel-ec2-arn:aws:iam::aws:policy/AmazonEC2ReadOnlyAccess",
+			"type": "aws_iam_policy_attachment"
+		},
+		{
+			"id": "devel-ec2-arn:aws:iam::aws:policy/AmazonRoute53FullAccess",
+			"type": "aws_iam_policy_attachment"
+		},
+		{
+			"id": "devel-ec2-arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryFullAccess",
+			"type": "aws_iam_policy_attachment"
+		},
+		{
 			"id": "devel-ec2",
 			"type": "aws_iam_role",
 			"source": {
@@ -885,18 +649,6 @@
 				"namespace": "",
 				"internal_name": "this"
 			}
-		},
-		{
-			"id": "devel-ec2-arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryFullAccess",
-			"type": "aws_iam_policy_attachment"
-		},
-		{
-			"id": "devel-ec2-arn:aws:iam::aws:policy/AmazonEC2ReadOnlyAccess",
-			"type": "aws_iam_policy_attachment"
-		},
-		{
-			"id": "devel-ec2-arn:aws:iam::aws:policy/AmazonRoute53FullAccess",
-			"type": "aws_iam_policy_attachment"
 		},
 		{
 			"id": "codecommit-bot",
@@ -1017,7 +769,7 @@
 		}
 	],
 	"differences": null,
-	"coverage": 82,
+	"coverage": 76,
 	"alerts": {
 		"": [
 			{

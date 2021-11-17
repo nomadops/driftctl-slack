@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"log"
+	"os"
 	"reflect"
 	"strconv"
 	"strings"
@@ -50,7 +51,7 @@ type DriftCtlOutput struct {
 }
 
 func main() {
-	content, err := ioutil.ReadFile("./bob.json")
+	content, err := ioutil.ReadFile(os.Getenv("DRIFTCTL_JSON"))
 	if err != nil {
 		log.Fatal("Error when opening file: ", err)
 	}
@@ -106,7 +107,7 @@ func main() {
 
 	fmt.Println(string(b))
 
-	api := slack.New("xoxb-2627493179970-2745638216097-AM07DonCxXEdvJvW0UKvF9K0")
+	api := slack.New(os.Getenv("SLACK_TOKEN"))
 
 	attachment := slack.Attachment{}
 
