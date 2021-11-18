@@ -4,6 +4,9 @@ ARG OS="linux"
 ARG ARCH="amd64"
 
 WORKDIR /app
+COPY go.mod go.sum ./
+RUN go mod download
+COPY . .
 RUN go build -o /usr/local/bin/driftctl-slack
 RUN apk add curl
 RUN curl -L https://github.com/cloudskiff/driftctl/releases/latest/download/driftctl_linux_amd64 -o /usr/local/bin/driftctl
