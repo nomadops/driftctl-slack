@@ -1,124 +1,48 @@
 package main
 
 import (
-	"encoding/json"
-	"fmt"
 	"io/ioutil"
 	"log"
 	"os"
-	"reflect"
-	"strconv"
-	"strings"
 
-	"github.com/slack-go/slack"
+	"github.com/logshell/driftctl-slack/driftctl"
+	driftslack "github.com/logshell/driftctl-slack/slack"
 )
 
-// DriftCtlOutput struct is the json output of `driftctl scan`
-type DriftCtlOutput struct {
-	Alerts struct {
-		_ []struct {
-			Message string `json:"message"`
-		} `json:""`
-	} `json:"alerts"`
-	Coverage    int64       `json:"coverage"`
-	Differences interface{} `json:"differences"`
-	Managed     []struct {
-		ID     string `json:"id"`
-		Source struct {
-			InternalName string `json:"internal_name"`
-			Namespace    string `json:"namespace"`
-			Source       string `json:"source"`
-		} `json:"source"`
-		Type string `json:"type"`
-	} `json:"managed"`
-	Missing []struct {
-		ID   string `json:"id"`
-		Type string `json:"type"`
-	} `json:"missing"`
-	ProviderName    string `json:"provider_name"`
-	ProviderVersion string `json:"provider_version"`
-	Summary         struct {
-		TotalChanged   int64 `json:"total_changed"`
-		TotalManaged   int64 `json:"total_managed"`
-		TotalMissing   int64 `json:"total_missing"`
-		TotalResources int64 `json:"total_resources"`
-		TotalUnmanaged int64 `json:"total_unmanaged"`
-	} `json:"summary"`
-	Unmanaged []struct {
-		ID   string `json:"id"`
-		Type string `json:"type"`
-	} `json:"unmanaged"`
-}
-
 func main() {
-	content, err := ioutil.ReadFile(os.Getenv("DRIFTCTL_JSON"))
-	if err != nil {
+	// get the driftctl scan output filename from the environment
+	driftctlJSON, err := os.LookupEnv("DRIFTCTL_JSON")
+	if !err {
+		log.Fatal("Environment variable DRIFTCTL_JSON does not exist")
+	}
+
+	// get the slack channel from the environment
+	slackChannel, err := os.LookupEnv("SLACK_CHANNEL")
+	if !err {
+		log.Fatal("Environment variable SLACK_CHANNEL does not exist")
+	}
+
+	// Get the slack token from the environment
+	slackToken, err := os.LookupEnv("SLACK_TOKEN")
+	if !err {
+		log.Fatal("Environment variable SLACK_TOKEN does not exist")
+	}
+
+	// Read the driftctl scan output file
+	content, err1 := ioutil.ReadFile(driftctlJSON)
+	if err1 != nil {
 		log.Fatal("Error when opening file: ", err)
 	}
 
-	var driftctloutput DriftCtlOutput
-	err = json.Unmarshal(content, &driftctloutput)
-	if err != nil {
-		log.Fatal("Error when unmarshalling: ", err)
+	// Get Driftctl scan summary
+	slackMessage, err1 := driftctl.ScanSummary(content)
+	if err1 != nil {
+		log.Fatal("Error when opening file: ", err)
 	}
 
-	summary := driftctloutput.Summary
-
-	bob := reflect.ValueOf(summary)
-	typeOfS := bob.Type()
-
-	var statusLeft []string
-	var statusRight []string
-
-	for i := 0; i < bob.NumField(); i++ {
-		statusLeft = append(statusLeft, typeOfS.Field(i).Name)
-		var george int64 = bob.Field(i).Interface().(int64)
-		statusRight = append(statusRight, strconv.Itoa(int(george)))
+	// Send the driftctl scan summary output to slack
+	driftslack.SendSummary(slackToken, slackChannel, slackMessage)
+	if !err {
+		log.Fatal("Error when running driftctl.ScanSummary", err)
 	}
-
-	for i := 0; i < len(statusLeft); i++ {
-	}
-
-	leftText := strings.Join(statusLeft, "\n")
-	rightText := strings.Join(statusRight, "\n")
-
-	headerText := slack.NewTextBlockObject("mrkdwn", "driftctl report", false, false)
-	headerSection := slack.NewSectionBlock(headerText, nil, nil)
-
-	bodyLeft := slack.NewTextBlockObject("mrkdwn", leftText, false, false)
-	bodyRight := slack.NewTextBlockObject("mrkdwn", rightText, false, false)
-
-	fieldSlice := make([]*slack.TextBlockObject, 0)
-	fieldSlice = append(fieldSlice, bodyLeft)
-	fieldSlice = append(fieldSlice, bodyRight)
-
-	fieldsSection := slack.NewSectionBlock(nil, fieldSlice, nil)
-
-	msg := slack.NewBlockMessage(
-		headerSection,
-		fieldsSection,
-	)
-
-	b, err := json.MarshalIndent(msg, "", "    ")
-	if err != nil {
-		fmt.Println(err)
-		return
-	}
-
-	fmt.Println(string(b))
-
-	api := slack.New(os.Getenv("SLACK_TOKEN"))
-
-	attachment := slack.Attachment{}
-
-	attachment.Blocks = msg.Blocks
-	channelID, timestamp, err := api.PostMessage(
-		"#gitops",
-		slack.MsgOptionAttachments(attachment),
-		slack.MsgOptionText(string("driftctl report"), false))
-	if err != nil {
-		fmt.Println(err)
-		return
-	}
-	fmt.Printf("Message successfully sent to channel %s at %s", channelID, timestamp)
 }
