@@ -12,4 +12,4 @@ RUN chmod +x /usr/local/bin/driftctl-slack.sh
 RUN curl -L https://github.com/cloudskiff/driftctl/releases/latest/download/driftctl_linux_amd64 -o /usr/local/bin/driftctl
 RUN chmod +x /usr/local/bin/driftctl
 
-ENTRYPOINT ["/usr/local/bin/driftctl-slack.sh"]
+CMD /usr/local/bin/driftctl-slack.sh
