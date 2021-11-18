@@ -76,10 +76,7 @@ func SendSummary(slackToken string, slackChannel string, slackMessage map[string
 	channelID, timestamp, err := api.PostMessage(
 		slackChannel,
 		slack.MsgOptionAttachments(attachment),
-		slack.MsgOptionText(string("*driftctl scan report*"), false),
-		slack.MsgOptionAsUser(true),
-		slack.MsgOptionIconURL("https://camo.githubusercontent.com/b115d7276465d42073a6cf50d38076f6987ded263825995af9154f811c8f90f6/68747470733a2f2f646f63732e647269667463746c2e636f6d2f696d672f647269667463746c5f6461726b2e737667"),
-		slack.MsgOptionUsername("driftctl-bot"))
+		slack.MsgOptionText(string("*driftctl scan report*"), false))
 	if err != nil {
 		log.Fatal("Error posting message to slack.", err)
 		return err
