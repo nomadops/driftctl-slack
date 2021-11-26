@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 echo "Beginning scan"
 /usr/local/bin/driftctl scan --from tfstate+s3://"${BUCKET_NAME}"/**/*.tfstate -o json://"${DRIFTCTL_JSON}"
