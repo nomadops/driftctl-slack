@@ -15,6 +15,6 @@ RUN curl -L https://github.com/cloudskiff/driftctl/releases/latest/download/drif
 FROM alpine:3.14
 COPY --from=builder /usr/local/bin/driftctl-slack /usr/local/bin/driftctl-slack
 COPY --from=builder /usr/local/bin/driftctl /usr/local/bin/driftctl
-COPY driftctl-slack.sh /usr/local/bin/driftctl-slack.sh
+COPY --from=builder driftctl-slack.sh /usr/local/bin/driftctl-slack.sh
 RUN chmod +x /usr/local/bin/driftctl-slack.sh  /usr/local/bin/driftctl-slack /usr/local/bin/driftctl 
 CMD /usr/local/bin/driftctl-slack.sh
