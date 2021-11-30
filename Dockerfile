@@ -9,7 +9,7 @@ RUN go mod download
 COPY . .
 RUN go build
 RUN apk add curl
-RUN curl -L https://github.com/cloudskiff/driftctl/releases/latest/download/driftctl_linux_amd64 -o driftctl.app
+RUN curl -s -L https://github.com/cloudskiff/driftctl/releases/latest/download/driftctl_linux_amd64 -o driftctl.app
 RUN ls -l /usr/local/bin
 
 # Clean-up and use a new container
