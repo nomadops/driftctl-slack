@@ -13,7 +13,7 @@ RUN curl -s -L https://github.com/cloudskiff/driftctl/releases/latest/download/d
 RUN ls -l /usr/local/bin
 
 # Clean-up and use a new container
-FROM alpine:3.14
+FROM alpine:3.15
 RUN apk add bash
 COPY --from=builder /app/driftctl-slack /usr/local/bin/driftctl-slack
 COPY --from=builder /app/driftctl.app /usr/local/bin/driftctl
