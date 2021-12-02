@@ -26,13 +26,6 @@ jobs:
       - uses: actions/checkout@v2
         with:
           fetch-depth: '0'
-      #- name: Bump version and push tag
-      #  uses: mathieudutour/github-tag-action@v5.6
-      #  id: tag_version
-      #  with:
-      #    github_token: ${{ secrets.GH_TOKEN }}
-      #    fetch_all_tags: true
-      #    release_branches: main
       - name: Bump version and push tag
         uses: anothrNick/github-tag-action@1.36.0
         env:
