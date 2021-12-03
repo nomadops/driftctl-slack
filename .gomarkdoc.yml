@@ -3,7 +3,7 @@ header: |+
   [![GitHub Actions](https://github.com/logshell/driftctl-slack/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/logshell/driftctl-slack/actions/workflows/ci.yml)
 
   
-#repository:
-#  url: https://github.com/logshell/driftctl-slack
-#  defaultBranch: main
-#  path: /
+repository:
+  url: https://github.com/logshell/driftctl-slack
+  defaultBranch: main
+  path: /
