@@ -19,7 +19,7 @@ import "github.com/logshell/driftctl-slack/driftctl"
 func ScanOutput(driftctlJSON []byte) (map[string]interface{}, error)
 ```
 
-ScanOutput returns a map\[string\]interface\{\} from the json output of \`driftctl scan \-o json://file\`
+ScanOutput returns a map\[string\]interface\{\} from \`driftctl scan \-o json://file\`
 
 ## func [ScanSummary](<https://github.com/logshell/driftctl-slack/blob/main/driftctl/driftctl.go#L62>)
 
@@ -27,7 +27,7 @@ ScanOutput returns a map\[string\]interface\{\} from the json output of \`driftc
 func ScanSummary(driftctlJSON []byte) (map[string]int, error)
 ```
 
-ScanSummary returns a map\[string\]string of the Summary section from the json output of \`driftctl scan \-o json://file\`
+ScanSummary returns a map\[string\]string of the Summary section from \`driftctl scan \-o json://file\`
 
 ## type [Scan](<https://github.com/logshell/driftctl-slack/blob/main/driftctl/driftctl.go#L9-L43>)
 

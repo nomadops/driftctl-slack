@@ -64,7 +64,7 @@ func createSummaryMessage(summary map[string]int) slack.Message {
 	return msg
 }
 
-// SendSummary sends a slack message to a slack channel
+// SendSummary sends formatted summary to `#gitops` channel
 func SendSummary(slackToken string, slackChannel string, slackMessage map[string]int) error {
 	msg := createSummaryMessage(slackMessage)
 

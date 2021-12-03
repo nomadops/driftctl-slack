@@ -17,7 +17,7 @@ import "github.com/logshell/driftctl-slack/slack"
 func SendSummary(slackToken string, slackChannel string, slackMessage map[string]int) error
 ```
 
-SendSummary sends a slack message to a slack channel
+SendSummary sends formatted summary to \`\#gitops\` channel
 
 
 

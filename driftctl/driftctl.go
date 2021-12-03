@@ -42,7 +42,7 @@ type Scan struct {
 	} `json:"unmanaged"`
 }
 
-// ScanOutput returns a map[string]interface{} from the json output of `driftctl scan -o json://file`
+// ScanOutput returns a map[string]interface{} from `driftctl scan -o json://file`
 func ScanOutput(driftctlJSON []byte) (map[string]interface{}, error) {
 	var scan Scan
 	err := json.Unmarshal(driftctlJSON, &scan)
@@ -58,7 +58,7 @@ func ScanOutput(driftctlJSON []byte) (map[string]interface{}, error) {
 	return output, nil
 }
 
-// ScanSummary returns a map[string]string of the Summary section from the json output of `driftctl scan -o json://file`
+// ScanSummary returns a map[string]string of the Summary section from `driftctl scan -o json://file`
 func ScanSummary(driftctlJSON []byte) (map[string]int, error) {
 	// This all works
 	scanOutput, err := ScanOutput(driftctlJSON)
