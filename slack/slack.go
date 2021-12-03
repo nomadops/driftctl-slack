@@ -9,7 +9,7 @@ import (
 	"github.com/slack-go/slack"
 )
 
-// boldMarkup takes an array of strings and returns an array of strings with bold markdownp
+// boldMarkup takes an array of strings and returns an array of strings with bold markdown
 func boldMarkup(ary []string) []string {
 	for i := 0; i < len(ary); i++ {
 		ary[i] = "*" + ary[i] + "*"
