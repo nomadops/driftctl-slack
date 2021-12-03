@@ -46,3 +46,5 @@ func main() {
 		log.Fatal("Error when running driftctl.ScanSummary", err)
 	}
 }
+
+//
