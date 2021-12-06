@@ -15,7 +15,7 @@ if [[ ${DRIFTCTL_JSON:-"unset"} == "unset" ]]; then
   exit 1
 fi
 
-/usr/local/bin/driftctl scan --from tfstate+s3://"${BUCKET_NAME}"/**/*.tfstate -o json://"${DRIFTCTL_JSON}"
+/usr/local/bin/driftctl scan --quiet --from tfstate+s3://"${BUCKET_NAME}"/**/*.tfstate -o json://"${DRIFTCTL_JSON}"
 echo "Sending scan to slack"
 /usr/local/bin/driftctl-slack 
 echo "Copying scan to s3"
