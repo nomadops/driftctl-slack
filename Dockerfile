@@ -19,4 +19,13 @@ COPY --from=builder /app/driftctl-slack /usr/local/bin/driftctl-slack
 COPY --from=builder /app/driftctl.app /usr/local/bin/driftctl
 COPY --from=builder /app/driftctl-slack.sh /usr/local/bin/driftctl-slack.sh
 RUN chmod +x /usr/local/bin/driftctl-slack.sh  /usr/local/bin/driftctl-slack /usr/local/bin/driftctl 
+
+RUN apk add --no-cache \
+  python3 \
+  py3-pip \
+  && pip3 install --upgrade pip \
+  && pip3 install --no-cache-dir \
+  awscli \
+  && rm -rf /var/cache/apk/*
+RUN aws --version
 CMD /usr/local/bin/driftctl-slack.sh
