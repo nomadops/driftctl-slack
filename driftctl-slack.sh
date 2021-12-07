@@ -19,4 +19,4 @@ fi
 echo "Sending scan to slack"
 /usr/local/bin/driftctl-slack 
 echo "Copying scan to s3"
-aws s3 cp "${DRIFTCTL_JSON}" s3://"${SCAN_BUCKET_NAME}"/driftctl-scan.json
+aws s3 cp "${DRIFTCTL_JSON}" s3://"${SCAN_BUCKET_NAME}"/"${DRIFTCTL_JSON}"
