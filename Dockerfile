@@ -14,7 +14,7 @@ RUN ls -l /usr/local/bin
 
 # Clean-up and use a new container
 FROM alpine:3.15
-RUN apk add bash
+RUN apk add bash jq curl
 COPY --from=builder /app/driftctl-slack /usr/local/bin/driftctl-slack
 COPY --from=builder /app/driftctl.app /usr/local/bin/driftctl
 COPY --from=builder /app/driftctl-slack.sh /usr/local/bin/driftctl-slack.sh
