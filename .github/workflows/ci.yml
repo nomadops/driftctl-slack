@@ -52,5 +52,5 @@ jobs:
         with:
           image_name: driftctl-slack
           push_image_and_stages: on:pull_request
-          image_tag: ${{ steps.ta_versions.outputs.new_tag }}
+          image_tag: ${{ steps.tag_versions.outputs.new_tag }}
 
