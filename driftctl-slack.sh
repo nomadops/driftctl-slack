@@ -9,8 +9,8 @@ log() {
 }
 
 # Exit if the BUCKET_NAME environment variable is not set
-if [[ ${BUCKET_NAME:-"unset"} == "unset" ]]; then
-  log "Environment variable BUCKET_NAME is not set"
+if [[ ${STATE_BUCKET_NAME:-"unset"} == "unset" ]]; then
+  log "Environment variable STATE_BUCKET_NAME is not set"
   exit 1
 fi
 
@@ -35,7 +35,7 @@ fi
 
 # Run driftctl scan from a hierarchical terraform state s3 repository and output it to a json file
 log "Running driftctl scan"
-/usr/local/bin/driftctl scan --quiet --from tfstate+s3://"${BUCKET_NAME}"/**/*.tfstate -o json://"${DRIFTCTL_JSON}"
+/usr/local/bin/driftctl scan --quiet --from tfstate+s3://"${STATE_BUCKET_NAME}"/**/*.tfstate -o json://"${DRIFTCTL_JSON}"
 
 # Publish the driftctl scan report summary to slack
 log "Sending scan to slack"
