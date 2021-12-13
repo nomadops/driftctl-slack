@@ -1,7 +1,5 @@
 #!/bin/bash
 
-# 
-
 # Custom JSON logging function
 log() {
   # Stolen from https://stegard.net/2021/07/how-to-make-a-shell-script-log-json-messages/
@@ -31,7 +29,6 @@ if [[ ${SLACK_CHANNEL:-"unset"} == "unset" ]]; then
   log "Environment variable SLACK_CHANNEL is not set"
   exit 1
 fi
-
 
 # Run driftctl scan from a hierarchical terraform state s3 repository and output it to a json file
 log "Running driftctl scan"

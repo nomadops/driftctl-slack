@@ -4,8 +4,8 @@ import (
 	"io/ioutil"
 	"os"
 
-	"github.com/logshell/driftctl-slack/driftctl"
-	driftslack "github.com/logshell/driftctl-slack/slack"
+	"github.com/nomadops/driftctl-slack/driftctl"
+	driftslack "github.com/nomadops/driftctl-slack/slack"
 	"github.com/rs/zerolog"
 	"github.com/rs/zerolog/log"
 )
