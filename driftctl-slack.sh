@@ -38,6 +38,9 @@ log "Running driftctl scan"
 log "Sending scan to slack"
 /usr/local/bin/driftctl-slack 
 
+# echo caller identity
+aws sts get-caller-identity
+
 # Copy the driftctl scan output to an s3 bucket
 log "Copying scan to s3"
 aws s3 --output json cp "${DRIFTCTL_JSON}" s3://"${SCAN_BUCKET_NAME}"/"${DRIFTCTL_JSON}"
