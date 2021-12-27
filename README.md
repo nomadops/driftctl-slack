@@ -37,10 +37,20 @@ Output is sent to stdout in json format for easy log processing.
 
 driftctl-slack is licensed under Apache License 2.0.
 
+# driftctl\-slack
+
+```go
+import "github.com/nomadops/driftctl-slack"
+```
+
+## Index
+
+
+
 # driftctl
 
 ```go
-import "command-line-arguments"
+import "github.com/nomadops/driftctl-slack/driftctl"
 ```
 
 ## Index
@@ -68,7 +78,7 @@ ScanSummary returns a map\[string\]string of the Summary section from \`driftctl
 # s3
 
 ```go
-import "command-line-arguments"
+import "github.com/nomadops/driftctl-slack/s3"
 ```
 
 ## Index
@@ -87,7 +97,7 @@ PutFile uploads a file to an Amazon Simple Storage Service \(Amazon S3\) bucket 
 # driftslack
 
 ```go
-import "command-line-arguments"
+import "github.com/nomadops/driftctl-slack/slack"
 ```
 
 ## Index
