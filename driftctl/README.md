@@ -11,7 +11,7 @@ import "github.com/nomadops/driftctl-slack/driftctl"
 
 ## Index
 
-- [func Run(bucket string, driftctlJSON string) (err error)](<#func-run>)
+- [func Run(bucket string, scanReport string) (err error)](<#func-run>)
 - [func ScanSummary(report []byte) (map[string]int, error)](<#func-scansummary>)
 - [type Scan](<#type-scan>)
 
@@ -19,7 +19,7 @@ import "github.com/nomadops/driftctl-slack/driftctl"
 ## func [Run](<https://github.com/nomadops/driftctl-slack/blob/main/driftctl/driftctl.go#L81>)
 
 ```go
-func Run(bucket string, driftctlJSON string) (err error)
+func Run(bucket string, scanReport string) (err error)
 ```
 
 Run executs the driftctl scan command and returns the output as a byte slice\.
