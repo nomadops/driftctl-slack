@@ -13,10 +13,12 @@ We've provided a [Terraform module](https://github.com/nomadops/terraform-aws-dr
 import "github.com/nomadops/driftctl-slack"
 ```
 
+driftctl\-scan will perform three actions: 1\. Execute \`driftctl scan\` against terraform statefiles in the specified STATE\_BUCKET variable 2\. Send a summary of the scan to the specified Slack channel 3\. Copy the driftctl scanfile to the specified S3 bucket
+
 driftctl will be run by the golang wrapper with the following options:
 
 ```
-$ /usr/local/bin/driftctl scan --quiet --from tfstate+s3://"${STATE_BUCKET_NAME}"/**/*.tfstate -o json://"${DRIFTCTL_JSON}"
+$ /usr/local/bin/driftctl scan --quiet --from tfstate+s3://"${STATE_BUCKET}"/**/*.tfstate -o json://"${DRIFTCTL_JSON}"
 ```
 
 Usage:
