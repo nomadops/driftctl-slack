@@ -84,12 +84,12 @@ func Run(bucket string, driftctlJSON string) (err error) {
 	cmd := exec.Command("driftctl", "scan", "--quiet", "--from", tfstates, "-o", target)
 
 	stdout, err := cmd.Output()
-	log.Info().Msg(string(stdout))
+	log.Info().Str("service", "driftctl").Msg(string(stdout))
 	// This might be the wrong approach. Driftctl will return an error if there are changes, which will be every change without a really well-defined driftignore.
 	if err != nil {
-		log.Info().Msg("Driftctl scan detected drift.")
+		log.Info().Str("service", "driftctl").Msg("Driftctl scan detected drift.")
 	}
 
-	log.Info().Msg(string(stdout))
+	log.Info().Str("service", "driftctl").Msg(string(stdout))
 	return nil
 }

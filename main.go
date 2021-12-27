@@ -108,5 +108,8 @@ func main() {
 			Msg("")
 	}
 
-	log.Info().Str("VersionId", *putOutput.VersionId).Msg("Report uploaded to S3")
+	log.Info().
+		Str("service", "driftctl-slack").
+		Str("VersionId", *putOutput.VersionId).
+		Msg("Report uploaded to S3")
 }

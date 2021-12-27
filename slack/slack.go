@@ -81,7 +81,10 @@ func SendSummary(slackToken string, slackChannel string, slackMessage map[string
 		return err
 	}
 
-	log.Info().Str("channel", slackChannel).Msg("Message successfully sent to slack.")
+	log.Info().
+		Str("service", "driftctl-slack").
+		Str("channel", slackChannel).
+		Msg("Message successfully sent to slack.")
 	logSummary(slackMessage)
 
 	return nil
