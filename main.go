@@ -25,10 +25,10 @@ func main() {
 	}
 
 	// get driftctl scan output filename from the environment
-	scanReport, err := os.LookupEnv("SCAN_FILE")
-	if !err {
-		log.Fatal().Msg("Environment variable SCAN_FILE does not exist")
-	}
+	// scanReport, err := os.LookupEnv("SCAN_FILE")
+	// if !err {
+	// 	log.Fatal().Msg("Environment variable SCAN_FILE does not exist")
+	// }
 
 	// get scan bucket name from the environment.
 	scanBucket, err := os.LookupEnv("SCAN_BUCKET")

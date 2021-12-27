@@ -78,12 +78,13 @@ func ScanSummary(report []byte) (map[string]int, error) {
 }
 
 // Run executs the driftctl scan command and returns the output as a byte slice.
-func Run(bucket string, driftctlJSON string) (err error) {
+func Run(bucket string) (stdout []byte, err error) {
 	tfstates := fmt.Sprintf("tfstate+s3://%v/**/*.tfstate", bucket)
-	target := fmt.Sprintf("json://%v", driftctlJSON)
+	// target := fmt.Sprintf("json://%v", driftctlJSON)
+	target := "json://stdout"
 	cmd := exec.Command("driftctl", "scan", "--quiet", "--from", tfstates, "-o", target)
 
-	stdout, err := cmd.Output()
+	output, err := cmd.Output()
 	log.Info().Str("service", "driftctl").Msg(string(stdout))
 	// This might be the wrong approach. Driftctl will return an error if there are changes, which will be every change without a really well-defined driftignore.
 	if err != nil {
@@ -91,5 +92,5 @@ func Run(bucket string, driftctlJSON string) (err error) {
 	}
 
 	log.Info().Str("service", "driftctl").Msg(string(stdout))
-	return nil
+	return output, nil
 }
