@@ -11,17 +11,8 @@ import "github.com/nomadops/driftctl-slack/slack"
 
 ## Index
 
-- [func Log(summary map[string]int)](<#func-log>)
 - [func SendSummary(slackToken string, slackChannel string, slackMessage map[string]int) error](<#func-sendsummary>)
 
-
-## func [Log](<https://github.com/nomadops/driftctl-slack/blob/main/slack/slack.go#L90>)
-
-```go
-func Log(summary map[string]int)
-```
-
-Log sends driftctl scan summary to stdout for CloudWatch parsing
 
 ## func [SendSummary](<https://github.com/nomadops/driftctl-slack/blob/main/slack/slack.go#L67>)
 

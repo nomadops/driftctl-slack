@@ -10,7 +10,7 @@ import (
 
 // PutObjectAPI defines the interface for the PutObject function.
 // We use this interface to test the function using a mocked service.
-type PutObjectAPI interface {
+type putObjectAPI interface {
 	PutObject(ctx context.Context,
 		params *s3.PutObjectInput,
 		optFns ...func(*s3.Options)) (*s3.PutObjectOutput, error)
@@ -24,6 +24,6 @@ type PutObjectAPI interface {
 // Output:
 //     If success, a PutObjectOutput object containing the result of the service call and nil
 //     Otherwise, nil and an error from the call to PutObject
-func PutFile(c context.Context, api PutObjectAPI, input *s3.PutObjectInput) (*s3.PutObjectOutput, error) {
+func PutFile(c context.Context, api putObjectAPI, input *s3.PutObjectInput) (*s3.PutObjectOutput, error) {
 	return api.PutObject(c, input)
 }

@@ -82,12 +82,13 @@ func SendSummary(slackToken string, slackChannel string, slackMessage map[string
 	}
 
 	log.Info().Str("channel", slackChannel).Msg("Message successfully sent to slack.")
+	logSummary(slackMessage)
 
 	return nil
 }
 
-// Log sends driftctl scan summary to stdout for CloudWatch parsing
-func Log(summary map[string]int) {
+// logSummary sends driftctl scan summary to stdout for CloudWatch parsing.
+func logSummary(summary map[string]int) {
 	log.Info().
 		Str("service", "driftctl-slack").
 		Int("total_resources", summary["total_resources"]).

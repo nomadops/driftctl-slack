@@ -55,13 +55,12 @@ func main() {
 	}
 
 	// Needs better variables
-	scanOutput, err1 := driftctl.Run(stateBucket, scanReport)
+	err1 := driftctl.Run(stateBucket, scanReport)
 	if err1 != nil {
 		log.Fatal().Msg("Error when running driftctl scan")
 	}
-	log.Info().Str("scan_output", string(scanOutput)).Msg("Scan output.")
 
-	// // Read driftctl scan output file
+	// Read driftctl scan output file
 	content, err1 := os.Open(scanReport)
 	if err1 != nil {
 		log.Fatal().
@@ -87,8 +86,6 @@ func main() {
 			Msg("")
 	}
 
-	driftslack.Log(slackMessage)
-
 	input := &s3.PutObjectInput{
 		Bucket: aws.String(scanBucket),
 		Key:    aws.String(scanReport),
@@ -104,12 +101,12 @@ func main() {
 	}
 	client := s3.NewFromConfig(cfg)
 
-	george, err1 := drifts3.PutFile(context.TODO(), client, input)
+	putOutput, err1 := drifts3.PutFile(context.TODO(), client, input)
 	if err1 != nil {
 		log.Fatal().
 			Bool("Error when opening file: ", err).
 			Msg("")
 	}
 
-	log.Info().Str("VersionId", *george.VersionId).Msg("Report uploaded to S3")
+	log.Info().Str("VersionId", *putOutput.VersionId).Msg("Report uploaded to S3")
 }
