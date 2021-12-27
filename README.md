@@ -10,7 +10,7 @@ We've provided a [Terraform module](https://github.com/nomadops/terraform-aws-dr
 `driftctl scan` will be executed as the following command:
 
 ```bash
-$ /usr/local/bin/driftctl scan --quiet --from tfstate+s3://"${STATE_BUCKET}"/**/*.tfstate -o json://"${DRIFTCTL_JSON}"
+$ /usr/local/bin/driftctl scan --quiet --from tfstate+s3://"${STATE_BUCKET}"/**/*.tfstate -o json://"${SCAN_FILE}"
 ````
 
 Usage:
