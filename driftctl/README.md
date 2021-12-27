@@ -12,7 +12,6 @@ import "github.com/nomadops/driftctl-slack/driftctl"
 ## Index
 
 - [func Run(bucket string, driftctlJSON string) (err error)](<#func-run>)
-- [func ScanOutput(report []byte) (map[string]interface{}, error)](<#func-scanoutput>)
 - [func ScanSummary(report []byte) (map[string]int, error)](<#func-scansummary>)
 - [type Scan](<#type-scan>)
 
@@ -24,14 +23,6 @@ func Run(bucket string, driftctlJSON string) (err error)
 ```
 
 Run executs the driftctl scan command and returns the output as a byte slice\.
-
-## func [ScanOutput](<https://github.com/nomadops/driftctl-slack/blob/main/driftctl/driftctl.go#L49>)
-
-```go
-func ScanOutput(report []byte) (map[string]interface{}, error)
-```
-
-ScanOutput returns a map\[string\]interface\{\} from \`driftctl scan \-o json://file\`\.
 
 ## func [ScanSummary](<https://github.com/nomadops/driftctl-slack/blob/main/driftctl/driftctl.go#L65>)
 

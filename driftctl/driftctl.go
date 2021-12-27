@@ -45,8 +45,8 @@ type Scan struct {
 	} `json:"unmanaged"`
 }
 
-// ScanOutput returns a map[string]interface{} from `driftctl scan -o json://file`.
-func ScanOutput(report []byte) (map[string]interface{}, error) {
+// scanOutput returns a map[string]interface{} from `driftctl scan -o json://file`.
+func scanOutput(report []byte) (map[string]interface{}, error) {
 	var scan Scan
 	err := json.Unmarshal(report, &scan)
 	if err != nil {
@@ -64,13 +64,13 @@ func ScanOutput(report []byte) (map[string]interface{}, error) {
 // ScanSummary returns a map[string]string of the Summary section from `driftctl scan -o json://file`.
 func ScanSummary(report []byte) (map[string]int, error) {
 	// This all works
-	scanOutput, err := ScanOutput(report)
+	scan, err := scanOutput(report)
 	if err != nil {
-		log.Fatal().Msg("Error when unmarshalling ScanOutput(report)")
+		log.Fatal().Msg("Error when unmarshalling scanOutput(report)")
 		return nil, err
 	}
 
-	foo, _ := json.Marshal(scanOutput["summary"])
+	foo, _ := json.Marshal(scan["summary"])
 	var summary map[string]int
 	json.Unmarshal(foo, &summary)
 
