@@ -9,7 +9,7 @@ import (
 )
 
 // Scan struct is the json output of `driftctl scan`.
-type Scan struct {
+type scan struct {
 	Alerts struct {
 		_ []struct {
 			Message string `json:"message"`
@@ -47,15 +47,15 @@ type Scan struct {
 
 // scanOutput returns a map[string]interface{} from `driftctl scan -o json://file`.
 func scanOutput(report []byte) (map[string]interface{}, error) {
-	var scan Scan
-	err := json.Unmarshal(report, &scan)
+	var scanout scan
+	err := json.Unmarshal(report, &scanout)
 	if err != nil {
 		log.Fatal().Msg("Error when unmarshalling &scan ")
 		return nil, err
 	}
 
 	var output map[string]interface{}
-	scanOut, _ := json.Marshal(scan)
+	scanOut, _ := json.Marshal(scanout)
 	json.Unmarshal(scanOut, &output)
 
 	return output, nil
@@ -64,13 +64,13 @@ func scanOutput(report []byte) (map[string]interface{}, error) {
 // ScanSummary returns a map[string]string of the Summary section from `driftctl scan -o json://file`.
 func ScanSummary(report []byte) (map[string]int, error) {
 	// This all works
-	scan, err := scanOutput(report)
+	scanSum, err := scanOutput(report)
 	if err != nil {
 		log.Fatal().Msg("Error when unmarshalling scanOutput(report)")
 		return nil, err
 	}
 
-	foo, _ := json.Marshal(scan["summary"])
+	foo, _ := json.Marshal(scanSum["summary"])
 	var summary map[string]int
 	json.Unmarshal(foo, &summary)
 

@@ -47,7 +47,6 @@ import "command-line-arguments"
 
 - [func Run(bucket string, driftctlJSON string) (err error)](<#func-run>)
 - [func ScanSummary(report []byte) (map[string]int, error)](<#func-scansummary>)
-- [type Scan](<#type-scan>)
 
 
 ## func [Run](<https://github.com/nomadops/driftctl-slack/blob/main/driftctl/driftctl.go#L81>)
@@ -65,46 +64,6 @@ func ScanSummary(report []byte) (map[string]int, error)
 ```
 
 ScanSummary returns a map\[string\]string of the Summary section from \`driftctl scan \-o json://file\`\.
-
-## type [Scan](<https://github.com/nomadops/driftctl-slack/blob/main/driftctl/driftctl.go#L12-L46>)
-
-Scan struct is the json output of \`driftctl scan\`\.
-
-```go
-type Scan struct {
-    Alerts struct {
-        // contains filtered or unexported fields
-    }   `json:"alerts"`
-    Coverage    int64       `json:"coverage"`
-    Differences interface{} `json:"differences"`
-    Managed     []struct {
-        ID     string `json:"id"`
-        Source struct {
-            InternalName string `json:"internal_name"`
-            Namespace    string `json:"namespace"`
-            Source       string `json:"source"`
-        }   `json:"source"`
-        Type string `json:"type"`
-    }   `json:"managed"`
-    Missing []struct {
-        ID   string `json:"id"`
-        Type string `json:"type"`
-    }   `json:"missing"`
-    ProviderName    string `json:"provider_name"`
-    ProviderVersion string `json:"provider_version"`
-    Summary         struct {
-        TotalChanged   int64 `json:"total_changed"`
-        TotalManaged   int64 `json:"total_managed"`
-        TotalMissing   int64 `json:"total_missing"`
-        TotalResources int64 `json:"total_resources"`
-        TotalUnmanaged int64 `json:"total_unmanaged"`
-    }   `json:"summary"`
-    Unmanaged []struct {
-        ID   string `json:"id"`
-        Type string `json:"type"`
-    }   `json:"unmanaged"`
-}
-```
 
 # s3
 
