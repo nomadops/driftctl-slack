@@ -2,8 +2,8 @@ package main
 
 import (
 	"context"
-	"io/ioutil"
 	"os"
+	"strings"
 
 	"github.com/aws/aws-sdk-go-v2/config"
 	"github.com/aws/aws-sdk-go-v2/service/s3"
@@ -25,10 +25,10 @@ func main() {
 	}
 
 	// get driftctl scan output filename from the environment
-	// scanReport, err := os.LookupEnv("SCAN_FILE")
-	// if !err {
-	// 	log.Fatal().Msg("Environment variable SCAN_FILE does not exist")
-	// }
+	scanReport, err := os.LookupEnv("SCAN_FILE")
+	if !err {
+		log.Fatal().Msg("Environment variable SCAN_FILE does not exist")
+	}
 
 	// get scan bucket name from the environment.
 	scanBucket, err := os.LookupEnv("SCAN_BUCKET")
@@ -55,23 +55,23 @@ func main() {
 	}
 
 	// Needs better variables
-	err1 := driftctl.Run(stateBucket, scanReport)
+	content, err1 := driftctl.Run(stateBucket)
 	if err1 != nil {
 		log.Fatal().Msg("Error when running driftctl scan")
 	}
 
-	// Read driftctl scan output file
-	content, err1 := os.Open(scanReport)
-	if err1 != nil {
-		log.Fatal().
-			Bool("Error while opening file:", err).
-			Msg("")
-	}
-	defer content.Close()
+	// // Read driftctl scan output file
+	// content, err1 := os.Open(scanReport)
+	// if err1 != nil {
+	// 	log.Fatal().
+	// 		Bool("Error while opening file:", err).
+	// 		Msg("")
+	// }
+	// defer content.Close()
 
-	bob, _ := ioutil.ReadAll(content)
+	// bob, _ := ioutil.ReadAll(content)
 	// Get Driftctl scan summary
-	message, err1 := driftctl.ScanSummary(bob)
+	message, err1 := driftctl.ScanSummary(content)
 	if err1 != nil {
 		log.Fatal().
 			Bool("Error when opening file: ", err).
@@ -86,10 +86,11 @@ func main() {
 			Msg("")
 	}
 
+	reader := strings.NewReader(string(content))
 	input := &s3.PutObjectInput{
 		Bucket: aws.String(scanBucket),
 		Key:    aws.String(scanReport),
-		Body:   content,
+		Body:   reader,
 	}
 
 	// Create a new S3 client
