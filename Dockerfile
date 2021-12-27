@@ -24,5 +24,4 @@ RUN apk add --no-cache \
   py3-pip \
   && pip3 install --upgrade pip \
   && rm -rf /var/cache/apk/*
-RUN aws --version
 CMD /usr/local/bin/driftctl-slack
