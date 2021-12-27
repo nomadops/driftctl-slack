@@ -106,9 +106,7 @@ input defines the input arguments to the service call.
 
 ### Output
 
-```
-If success, a PutObjectOutput object containing the result of the service call and nil. Otherwise, nil and an error from the call to PutObject.
-```
+If success\, a PutObjectOutput object containing the result of the service call and nil\. Otherwise\, nil and an error from the call to PutObject\.
 
 # driftslack
 
