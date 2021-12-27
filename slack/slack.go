@@ -64,16 +64,16 @@ func createSummaryMessage(summary map[string]int) slack.Message {
 }
 
 // SendSummary sends formatted summary to `#gitops` channel
-func SendSummary(slackToken string, slackChannel string, slackMessage map[string]int) error {
-	msg := createSummaryMessage(slackMessage)
+func SendSummary(token string, channel string, message map[string]int) error {
+	msg := createSummaryMessage(message)
 
-	api := slack.New(slackToken)
+	api := slack.New(token)
 
 	attachment := slack.Attachment{}
 
 	attachment.Blocks = msg.Blocks
 	_, _, err := api.PostMessage(
-		slackChannel,
+		channel,
 		slack.MsgOptionAttachments(attachment),
 		slack.MsgOptionText(string("*driftctl scan report*"), false))
 	if err != nil {
@@ -83,9 +83,9 @@ func SendSummary(slackToken string, slackChannel string, slackMessage map[string
 
 	log.Info().
 		Str("service", "driftctl-slack").
-		Str("channel", slackChannel).
+		Str("channel", channel).
 		Msg("Message successfully sent to slack.")
-	logSummary(slackMessage)
+	logSummary(message)
 
 	return nil
 }

@@ -11,13 +11,13 @@ import "github.com/nomadops/driftctl-slack/slack"
 
 ## Index
 
-- [func SendSummary(slackToken string, slackChannel string, slackMessage map[string]int) error](<#func-sendsummary>)
+- [func SendSummary(token string, channel string, message map[string]int) error](<#func-sendsummary>)
 
 
 ## func [SendSummary](<https://github.com/nomadops/driftctl-slack/blob/main/slack/slack.go#L67>)
 
 ```go
-func SendSummary(slackToken string, slackChannel string, slackMessage map[string]int) error
+func SendSummary(token string, channel string, message map[string]int) error
 ```
 
 SendSummary sends formatted summary to \`\#gitops\` channel

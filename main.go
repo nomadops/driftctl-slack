@@ -43,15 +43,15 @@ func main() {
 	}
 
 	// get slack channel from the environment
-	slackChannel, err := os.LookupEnv("SLACK_CHANNEL")
+	channel, err := os.LookupEnv("CHANNEL")
 	if !err {
-		log.Fatal().Msg("Environment variable SLACK_CHANNEL does not exist")
+		log.Fatal().Msg("Environment variable CHANNEL does not exist")
 	}
 
 	// Get slack token from the environment
-	slackToken, err := os.LookupEnv("SLACK_TOKEN")
+	token, err := os.LookupEnv("TOKEN")
 	if !err {
-		log.Fatal().Msg("Environment variable SLACK_TOKEN does not exist")
+		log.Fatal().Msg("Environment variable TOKEN does not exist")
 	}
 
 	// Needs better variables
@@ -71,7 +71,7 @@ func main() {
 
 	bob, _ := ioutil.ReadAll(content)
 	// Get Driftctl scan summary
-	slackMessage, err1 := driftctl.ScanSummary(bob)
+	message, err1 := driftctl.ScanSummary(bob)
 	if err1 != nil {
 		log.Fatal().
 			Bool("Error when opening file: ", err).
@@ -79,7 +79,7 @@ func main() {
 	}
 
 	// Send driftctl scan summary output to slack
-	driftslack.SendSummary(slackToken, slackChannel, slackMessage)
+	driftslack.SendSummary(token, channel, message)
 	if !err {
 		log.Fatal().
 			Bool("Error when running driftctl.ScanSummary", err).
