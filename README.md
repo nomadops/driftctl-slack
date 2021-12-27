@@ -37,7 +37,7 @@ Output is sent to stdout in json format for easy log processing.
 
 driftctl-slack is licensed under Apache License 2.0.
 
-### Package documentation
+# Package documentation
 
 # driftctl\-slack
 

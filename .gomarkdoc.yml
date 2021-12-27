@@ -37,7 +37,7 @@ header: |+
 
   driftctl-slack is licensed under Apache License 2.0.
 
-  ### Package documentation
+  # Package documentation
   
 repository:
   url: https://github.com/nomadops/driftctl-slack
