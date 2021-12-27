@@ -101,7 +101,7 @@ func main() {
 	}
 	client := s3.NewFromConfig(cfg)
 
-	// Copy the driftctl scan output file to S3 bucket
+	// Copy the driftctl scan output file to S3 bucket.
 	putOutput, err1 := drifts3.PutFile(context.TODO(), client, input)
 	if err1 != nil {
 		log.Fatal().
