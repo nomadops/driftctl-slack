@@ -1,48 +1,12 @@
 {
 	"summary": {
-		"total_resources": 109,
+		"total_resources": 413,
 		"total_changed": 0,
-		"total_unmanaged": 25,
-		"total_missing": 1,
-		"total_managed": 83
+		"total_unmanaged": 292,
+		"total_missing": 7,
+		"total_managed": 114
 	},
 	"managed": [
-		{
-			"id": "logshell-cli",
-			"type": "aws_ecr_repository",
-			"source": {
-				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/_global/ecr/terraform.tfstate",
-				"namespace": "",
-				"internal_name": "name"
-			}
-		},
-		{
-			"id": "logshell-server",
-			"type": "aws_ecr_repository",
-			"source": {
-				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/_global/ecr/terraform.tfstate",
-				"namespace": "",
-				"internal_name": "name"
-			}
-		},
-		{
-			"id": "logshell-ui",
-			"type": "aws_ecr_repository",
-			"source": {
-				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/_global/ecr/terraform.tfstate",
-				"namespace": "",
-				"internal_name": "name"
-			}
-		},
-		{
-			"id": "route53-microk8s-lambda",
-			"type": "aws_ecr_repository",
-			"source": {
-				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/_global/ecr/terraform.tfstate",
-				"namespace": "",
-				"internal_name": "name"
-			}
-		},
 		{
 			"id": "athens",
 			"type": "aws_ecr_repository",
@@ -62,7 +26,43 @@
 			}
 		},
 		{
+			"id": "driftctl-slack",
+			"type": "aws_ecr_repository",
+			"source": {
+				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/_global/ecr/terraform.tfstate",
+				"namespace": "",
+				"internal_name": "name"
+			}
+		},
+		{
 			"id": "elasticsearch",
+			"type": "aws_ecr_repository",
+			"source": {
+				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/_global/ecr/terraform.tfstate",
+				"namespace": "",
+				"internal_name": "name"
+			}
+		},
+		{
+			"id": "logshell-cli",
+			"type": "aws_ecr_repository",
+			"source": {
+				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/_global/ecr/terraform.tfstate",
+				"namespace": "",
+				"internal_name": "name"
+			}
+		},
+		{
+			"id": "logshell-server",
+			"type": "aws_ecr_repository",
+			"source": {
+				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/_global/ecr/terraform.tfstate",
+				"namespace": "",
+				"internal_name": "name"
+			}
+		},
+		{
+			"id": "route53-microk8s-lambda",
 			"type": "aws_ecr_repository",
 			"source": {
 				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/_global/ecr/terraform.tfstate",
@@ -80,7 +80,16 @@
 			}
 		},
 		{
-			"id": "Z05796291WCTOK4GMKH1A",
+			"id": "logshell-ui",
+			"type": "aws_ecr_repository",
+			"source": {
+				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/_global/ecr/terraform.tfstate",
+				"namespace": "",
+				"internal_name": "name"
+			}
+		},
+		{
+			"id": "Z02655141UJWUE4OS75A9",
 			"type": "aws_route53_zone",
 			"source": {
 				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/_global/route53/zones/terraform.tfstate",
@@ -89,7 +98,7 @@
 			}
 		},
 		{
-			"id": "Z02655141UJWUE4OS75A9",
+			"id": "Z05796291WCTOK4GMKH1A",
 			"type": "aws_route53_zone",
 			"source": {
 				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/_global/route53/zones/terraform.tfstate",
@@ -142,13 +151,122 @@
 			}
 		},
 		{
-			"id": "athens-dev-dev-athens-cloudtrail-logs",
+			"id": "logshell-dev-eu-west-1-driftctl-output",
 			"type": "aws_s3_bucket_policy",
 			"source": {
-				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/eu-west-1/dev/data-stores/athens/terraform.tfstate",
-				"namespace": "module.cloudtrail_s3_bucket.module.s3_bucket",
-				"internal_name": "default"
+				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/eu-west-1/dev/ci/driftctl-slack/terraform.tfstate",
+				"namespace": "module.driftctl_scan_bucket",
+				"internal_name": "this"
 			}
+		},
+		{
+			"id": "driftctl-slack-st-cw-role",
+			"type": "aws_iam_role",
+			"source": {
+				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/eu-west-1/dev/ci/driftctl-slack/terraform.tfstate",
+				"namespace": "module.task",
+				"internal_name": "scheduled_task_cw_event_role"
+			}
+		},
+		{
+			"id": "ecs_task_execution",
+			"type": "aws_iam_role",
+			"source": {
+				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/eu-west-1/dev/ci/driftctl-slack/terraform.tfstate",
+				"namespace": "module.ecs_task_execution_role",
+				"internal_name": "this"
+			}
+		},
+		{
+			"id": "driftctl-slack-ecs-task-execution-role",
+			"type": "aws_iam_role",
+			"source": {
+				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/eu-west-1/dev/ci/driftctl-slack/terraform.tfstate",
+				"namespace": "module.td",
+				"internal_name": "ecs_task_execution_role"
+			}
+		},
+		{
+			"id": "sg-0406c51eb56543c04",
+			"type": "aws_security_group",
+			"source": {
+				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/eu-west-1/dev/ci/driftctl-slack/terraform.tfstate",
+				"namespace": "module.task_sg",
+				"internal_name": "this_name_prefix"
+			}
+		},
+		{
+			"id": "sgrule-3030534820",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-2355262619",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "arn:aws:iam::366248715104:policy/ecs-driftctl-scan-bucket-policy",
+			"type": "aws_iam_policy",
+			"source": {
+				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/eu-west-1/dev/ci/driftctl-slack/terraform.tfstate",
+				"namespace": "module.ecs-driftctl-scan-bucket-policy",
+				"internal_name": "policy"
+			}
+		},
+		{
+			"id": "logshell-dev-eu-west-1-driftctl-output",
+			"type": "aws_s3_bucket",
+			"source": {
+				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/eu-west-1/dev/ci/driftctl-slack/terraform.tfstate",
+				"namespace": "module.driftctl_scan_bucket",
+				"internal_name": "this"
+			}
+		},
+		{
+			"id": "logshell-dev-eu-west-1-driftctl-output-logs",
+			"type": "aws_s3_bucket",
+			"source": {
+				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/eu-west-1/dev/ci/driftctl-slack/terraform.tfstate",
+				"namespace": "module.driftctl_scan_log_bucket",
+				"internal_name": "this"
+			}
+		},
+		{
+			"id": "driftctl-slack-st-cw-role:driftctl-slack-st-cw-policy",
+			"type": "aws_iam_role_policy",
+			"source": {
+				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/eu-west-1/dev/ci/driftctl-slack/terraform.tfstate",
+				"namespace": "module.task",
+				"internal_name": "scheduled_task_cw_event_role_cloudwatch_policy"
+			}
+		},
+		{
+			"id": "ecs_task_execution-arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy",
+			"type": "aws_iam_policy_attachment"
+		},
+		{
+			"id": "ecs_task_execution-arn:aws:iam::aws:policy/ReadOnlyAccess",
+			"type": "aws_iam_policy_attachment"
+		},
+		{
+			"id": "driftctl-slack-ecs-task-execution-role-arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy",
+			"type": "aws_iam_policy_attachment"
+		},
+		{
+			"id": "de3be312-c29b-4d8e-a487-71b129fbbbb7",
+			"type": "aws_kms_key",
+			"source": {
+				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/eu-west-1/dev/ci/driftctl-slack/terraform.tfstate",
+				"namespace": "",
+				"internal_name": "objects"
+			}
+		},
+		{
+			"id": "ecs_task_execution-arn:aws:iam::366248715104:policy/ecs-driftctl-scan-bucket-policy",
+			"type": "aws_iam_policy_attachment"
+		},
+		{
+			"id": "driftctl-slack-ecs-task-execution-role-arn:aws:iam::aws:policy/ReadOnlyAccess",
+			"type": "aws_iam_policy_attachment"
 		},
 		{
 			"id": "sgrule-3670845330",
@@ -210,12 +328,12 @@
 			}
 		},
 		{
-			"id": "athens-ecs_task_execution:ECSTaskAccessSecretsPolicy",
-			"type": "aws_iam_role_policy",
+			"id": "dev-athens-logs",
+			"type": "aws_s3_bucket",
 			"source": {
 				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/eu-west-1/dev/data-stores/athens/terraform.tfstate",
-				"namespace": "",
-				"internal_name": "ecs_task_access_secrets"
+				"namespace": "module.s3_logs_bucket",
+				"internal_name": "this"
 			}
 		},
 		{
@@ -237,12 +355,43 @@
 			}
 		},
 		{
-			"id": "dev-athens-logs",
-			"type": "aws_s3_bucket",
+			"id": "arn:aws:iam::366248715104:policy/athens_policy",
+			"type": "aws_iam_policy",
 			"source": {
 				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/eu-west-1/dev/data-stores/athens/terraform.tfstate",
-				"namespace": "module.s3_logs_bucket",
-				"internal_name": "this"
+				"namespace": "",
+				"internal_name": "athens_policy"
+			}
+		},
+		{
+			"id": "athens-ecs_task_execution-arn:aws:iam::366248715104:policy/athens_policy",
+			"type": "aws_iam_policy_attachment"
+		},
+		{
+			"id": "Z02655141UJWUE4OS75A9_athens.dev.logshell.infra_A",
+			"type": "aws_route53_record",
+			"source": {
+				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/eu-west-1/dev/data-stores/athens/terraform.tfstate",
+				"namespace": "",
+				"internal_name": "athens"
+			}
+		},
+		{
+			"id": "athens-ecs_task_execution",
+			"type": "aws_iam_role",
+			"source": {
+				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/eu-west-1/dev/data-stores/athens/terraform.tfstate",
+				"namespace": "",
+				"internal_name": "ecs_task_execution"
+			}
+		},
+		{
+			"id": "athens-ecs_task_execution:ECSTaskAccessSecretsPolicy",
+			"type": "aws_iam_role_policy",
+			"source": {
+				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/eu-west-1/dev/data-stores/athens/terraform.tfstate",
+				"namespace": "",
+				"internal_name": "ecs_task_access_secrets"
 			}
 		},
 		{
@@ -261,41 +410,6 @@
 				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/eu-west-1/dev/data-stores/athens/terraform.tfstate",
 				"namespace": "module.athens_sg",
 				"internal_name": "this_name_prefix"
-			}
-		},
-		{
-			"id": "arn:aws:iam::366248715104:policy/athens_policy",
-			"type": "aws_iam_policy",
-			"source": {
-				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/eu-west-1/dev/data-stores/athens/terraform.tfstate",
-				"namespace": "",
-				"internal_name": "athens_policy"
-			}
-		},
-		{
-			"id": "Z02655141UJWUE4OS75A9_athens.dev.logshell.infra_A",
-			"type": "aws_route53_record",
-			"source": {
-				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/eu-west-1/dev/data-stores/athens/terraform.tfstate",
-				"namespace": "",
-				"internal_name": "athens"
-			}
-		},
-		{
-			"id": "athens-ecs_task_execution-arn:aws:iam::366248715104:policy/athens_policy",
-			"type": "aws_iam_policy_attachment"
-		},
-		{
-			"id": "athens-ecs_task_execution-arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy",
-			"type": "aws_iam_policy_attachment"
-		},
-		{
-			"id": "athens-ecs_task_execution",
-			"type": "aws_iam_role",
-			"source": {
-				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/eu-west-1/dev/data-stores/athens/terraform.tfstate",
-				"namespace": "",
-				"internal_name": "ecs_task_execution"
 			}
 		},
 		{
@@ -330,21 +444,21 @@
 			}
 		},
 		{
-			"id": "sg-0ee8ca67d50e97747",
-			"type": "aws_security_group",
-			"source": {
-				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/eu-west-1/dev/ec2/security/groups/ec2-devel/terraform.tfstate",
-				"namespace": "",
-				"internal_name": "this_name_prefix"
-			}
-		},
-		{
 			"id": "sgrule-1117288349",
 			"type": "aws_security_group_rule",
 			"source": {
 				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/eu-west-1/dev/ec2/security/groups/ec2-devel/terraform.tfstate",
 				"namespace": "",
 				"internal_name": "ingress_rules"
+			}
+		},
+		{
+			"id": "sg-0ee8ca67d50e97747",
+			"type": "aws_security_group",
+			"source": {
+				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/eu-west-1/dev/ec2/security/groups/ec2-devel/terraform.tfstate",
+				"namespace": "",
+				"internal_name": "this_name_prefix"
 			}
 		},
 		{
@@ -392,6 +506,50 @@
 			}
 		},
 		{
+			"id": "microk8s-leader-route53",
+			"type": "aws_lambda_function",
+			"source": {
+				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/eu-west-1/dev/lambda/functions/microk8s-leader-route53/terraform.tfstate",
+				"namespace": "module.microk8s-leader-route53",
+				"internal_name": "this"
+			}
+		},
+		{
+			"id": "arn:aws:iam::366248715104:policy/microk8s-leader-route53-logs",
+			"type": "aws_iam_policy",
+			"source": {
+				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/eu-west-1/dev/lambda/functions/microk8s-leader-route53/terraform.tfstate",
+				"namespace": "module.microk8s-leader-route53",
+				"internal_name": "logs"
+			}
+		},
+		{
+			"id": "arn:aws:iam::366248715104:policy/microk8s-leader-route53",
+			"type": "aws_iam_policy",
+			"source": {
+				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/eu-west-1/dev/lambda/functions/microk8s-leader-route53/terraform.tfstate",
+				"namespace": "module.microk8s-leader-route53",
+				"internal_name": "additional_json"
+			}
+		},
+		{
+			"id": "microk8s-leader-route53",
+			"type": "aws_iam_role",
+			"source": {
+				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/eu-west-1/dev/lambda/functions/microk8s-leader-route53/terraform.tfstate",
+				"namespace": "module.microk8s-leader-route53",
+				"internal_name": "lambda"
+			}
+		},
+		{
+			"id": "microk8s-leader-route53-arn:aws:iam::366248715104:policy/microk8s-leader-route53",
+			"type": "aws_iam_policy_attachment"
+		},
+		{
+			"id": "microk8s-leader-route53-arn:aws:iam::366248715104:policy/microk8s-leader-route53-logs",
+			"type": "aws_iam_policy_attachment"
+		},
+		{
 			"id": "sg-05ed897ee3a45dab0",
 			"type": "aws_security_group",
 			"source": {
@@ -401,44 +559,80 @@
 			}
 		},
 		{
-			"id": "subnet-067411ea57ab1fd05",
-			"type": "aws_subnet",
+			"id": "sgrule-3179209584",
+			"type": "aws_security_group_rule",
 			"source": {
-				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/eu-west-1/dev/networking/vpc/terraform.tfstate",
-				"namespace": "module.vpc",
-				"internal_name": "private"
+				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/eu-west-1/dev/networking/security-groups/endpoints/terraform.tfstate",
+				"namespace": "",
+				"internal_name": "ingress_rules"
 			}
 		},
 		{
-			"id": "subnet-057f1f61197d620ad",
-			"type": "aws_subnet",
+			"id": "sgrule-2550404870",
+			"type": "aws_security_group_rule",
 			"source": {
-				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/eu-west-1/dev/networking/vpc/terraform.tfstate",
-				"namespace": "module.vpc",
-				"internal_name": "private"
+				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/eu-west-1/dev/networking/security-groups/endpoints/terraform.tfstate",
+				"namespace": "",
+				"internal_name": "ingress_rules"
 			}
 		},
 		{
-			"id": "subnet-027789548830465fc",
-			"type": "aws_subnet",
+			"id": "sgrule-101361238",
+			"type": "aws_security_group_rule",
 			"source": {
-				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/eu-west-1/dev/networking/vpc/terraform.tfstate",
-				"namespace": "module.vpc",
-				"internal_name": "public"
+				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/eu-west-1/dev/networking/security-groups/endpoints/terraform.tfstate",
+				"namespace": "",
+				"internal_name": "ingress_rules"
 			}
 		},
 		{
-			"id": "subnet-0411c37a29721e05b",
-			"type": "aws_subnet",
+			"id": "sgrule-662294645",
+			"type": "aws_security_group_rule",
 			"source": {
-				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/eu-west-1/dev/networking/vpc/terraform.tfstate",
-				"namespace": "module.vpc",
-				"internal_name": "public"
+				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/eu-west-1/dev/networking/security-groups/endpoints/terraform.tfstate",
+				"namespace": "",
+				"internal_name": "ingress_rules"
 			}
 		},
 		{
-			"id": "subnet-01cfa44d3e4811f2d",
-			"type": "aws_subnet",
+			"id": "sgrule-3816944257",
+			"type": "aws_security_group_rule",
+			"source": {
+				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/eu-west-1/dev/networking/security-groups/endpoints/terraform.tfstate",
+				"namespace": "",
+				"internal_name": "ingress_with_cidr_blocks"
+			}
+		},
+		{
+			"id": "sgrule-3392004639",
+			"type": "aws_security_group_rule",
+			"source": {
+				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/eu-west-1/dev/networking/security-groups/endpoints/terraform.tfstate",
+				"namespace": "",
+				"internal_name": "ingress_with_cidr_blocks"
+			}
+		},
+		{
+			"id": "sgrule-2593169865",
+			"type": "aws_security_group_rule",
+			"source": {
+				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/eu-west-1/dev/networking/security-groups/endpoints/terraform.tfstate",
+				"namespace": "",
+				"internal_name": "ingress_with_source_security_group_id"
+			}
+		},
+		{
+			"id": "sgrule-1656468515",
+			"type": "aws_security_group_rule",
+			"source": {
+				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/eu-west-1/dev/networking/security-groups/endpoints/terraform.tfstate",
+				"namespace": "",
+				"internal_name": "ingress_with_source_security_group_id"
+			}
+		},
+		{
+			"id": "rtb-0d8266a408839b2eb",
+			"type": "aws_route_table",
 			"source": {
 				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/eu-west-1/dev/networking/vpc/terraform.tfstate",
 				"namespace": "module.vpc",
@@ -446,30 +640,39 @@
 			}
 		},
 		{
-			"id": "subnet-044a53086bb5977c0",
-			"type": "aws_subnet",
+			"id": "rtb-0475c2417dd4c1adb",
+			"type": "aws_route_table",
 			"source": {
 				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/eu-west-1/dev/networking/vpc/terraform.tfstate",
 				"namespace": "module.vpc",
-				"internal_name": "intra"
+				"internal_name": "public"
 			}
 		},
 		{
-			"id": "vpc-066b0b59beca49f26",
-			"type": "aws_vpc",
+			"id": "rtb-01114b5b6d59921eb",
+			"type": "aws_route_table",
 			"source": {
 				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/eu-west-1/dev/networking/vpc/terraform.tfstate",
 				"namespace": "module.vpc",
-				"internal_name": "this"
+				"internal_name": "private"
 			}
 		},
 		{
-			"id": "vpc-flow-log-role-20211108213719141200000002",
-			"type": "aws_iam_role",
+			"id": "rtbassoc-063012b29b82e0a8c",
+			"type": "aws_route_table_association",
 			"source": {
 				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/eu-west-1/dev/networking/vpc/terraform.tfstate",
 				"namespace": "module.vpc",
-				"internal_name": "vpc_flow_log_cloudwatch"
+				"internal_name": "private"
+			}
+		},
+		{
+			"id": "rtbassoc-00409c08209103fbf",
+			"type": "aws_route_table_association",
+			"source": {
+				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/eu-west-1/dev/networking/vpc/terraform.tfstate",
+				"namespace": "module.vpc",
+				"internal_name": "private"
 			}
 		},
 		{
@@ -509,30 +712,8 @@
 			}
 		},
 		{
-			"id": "rtbassoc-063012b29b82e0a8c",
-			"type": "aws_route_table_association",
-			"source": {
-				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/eu-west-1/dev/networking/vpc/terraform.tfstate",
-				"namespace": "module.vpc",
-				"internal_name": "private"
-			}
-		},
-		{
-			"id": "rtbassoc-00409c08209103fbf",
-			"type": "aws_route_table_association",
-			"source": {
-				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/eu-west-1/dev/networking/vpc/terraform.tfstate",
-				"namespace": "module.vpc",
-				"internal_name": "private"
-			}
-		},
-		{
-			"id": "vpc-flow-log-role-20211108213719141200000002-arn:aws:iam::366248715104:policy/vpc-flow-log-to-cloudwatch-20211108213716705600000001",
-			"type": "aws_iam_policy_attachment"
-		},
-		{
-			"id": "arn:aws:iam::366248715104:policy/vpc-flow-log-to-cloudwatch-20211108213716705600000001",
-			"type": "aws_iam_policy",
+			"id": "vpc-flow-log-role-20211108213719141200000002",
+			"type": "aws_iam_role",
 			"source": {
 				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/eu-west-1/dev/networking/vpc/terraform.tfstate",
 				"namespace": "module.vpc",
@@ -540,13 +721,8 @@
 			}
 		},
 		{
-			"id": "sg-0ab56c1ba939b3313",
-			"type": "aws_default_security_group",
-			"source": {
-				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/eu-west-1/dev/networking/vpc/terraform.tfstate",
-				"namespace": "module.vpc",
-				"internal_name": "this"
-			}
+			"id": "vpc-flow-log-role-20211108213719141200000002-arn:aws:iam::366248715104:policy/vpc-flow-log-to-cloudwatch-20211108213716705600000001",
+			"type": "aws_iam_policy_attachment"
 		},
 		{
 			"id": "igw-0e2e3781a4f6bbed3",
@@ -558,17 +734,8 @@
 			}
 		},
 		{
-			"id": "rtb-0d8266a408839b2eb",
-			"type": "aws_route_table",
-			"source": {
-				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/eu-west-1/dev/networking/vpc/terraform.tfstate",
-				"namespace": "module.vpc",
-				"internal_name": "intra"
-			}
-		},
-		{
-			"id": "rtb-01114b5b6d59921eb",
-			"type": "aws_route_table",
+			"id": "subnet-067411ea57ab1fd05",
+			"type": "aws_subnet",
 			"source": {
 				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/eu-west-1/dev/networking/vpc/terraform.tfstate",
 				"namespace": "module.vpc",
@@ -576,8 +743,35 @@
 			}
 		},
 		{
-			"id": "rtb-0475c2417dd4c1adb",
-			"type": "aws_route_table",
+			"id": "subnet-057f1f61197d620ad",
+			"type": "aws_subnet",
+			"source": {
+				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/eu-west-1/dev/networking/vpc/terraform.tfstate",
+				"namespace": "module.vpc",
+				"internal_name": "private"
+			}
+		},
+		{
+			"id": "subnet-044a53086bb5977c0",
+			"type": "aws_subnet",
+			"source": {
+				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/eu-west-1/dev/networking/vpc/terraform.tfstate",
+				"namespace": "module.vpc",
+				"internal_name": "intra"
+			}
+		},
+		{
+			"id": "subnet-01cfa44d3e4811f2d",
+			"type": "aws_subnet",
+			"source": {
+				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/eu-west-1/dev/networking/vpc/terraform.tfstate",
+				"namespace": "module.vpc",
+				"internal_name": "intra"
+			}
+		},
+		{
+			"id": "subnet-027789548830465fc",
+			"type": "aws_subnet",
 			"source": {
 				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/eu-west-1/dev/networking/vpc/terraform.tfstate",
 				"namespace": "module.vpc",
@@ -585,8 +779,17 @@
 			}
 		},
 		{
-			"id": "nat-05e4f610a2b64933a",
-			"type": "aws_nat_gateway",
+			"id": "subnet-0411c37a29721e05b",
+			"type": "aws_subnet",
+			"source": {
+				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/eu-west-1/dev/networking/vpc/terraform.tfstate",
+				"namespace": "module.vpc",
+				"internal_name": "public"
+			}
+		},
+		{
+			"id": "vpc-066b0b59beca49f26",
+			"type": "aws_vpc",
 			"source": {
 				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/eu-west-1/dev/networking/vpc/terraform.tfstate",
 				"namespace": "module.vpc",
@@ -594,21 +797,12 @@
 			}
 		},
 		{
-			"id": "eipalloc-0cc4773d6d6d98965",
-			"type": "aws_eip",
+			"id": "arn:aws:iam::366248715104:policy/vpc-flow-log-to-cloudwatch-20211108213716705600000001",
+			"type": "aws_iam_policy",
 			"source": {
 				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/eu-west-1/dev/networking/vpc/terraform.tfstate",
 				"namespace": "module.vpc",
-				"internal_name": "nat"
-			}
-		},
-		{
-			"id": "r-rtb-01114b5b6d59921eb1080289494",
-			"type": "aws_route",
-			"source": {
-				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/eu-west-1/dev/networking/vpc/terraform.tfstate",
-				"namespace": "module.vpc",
-				"internal_name": "private_nat_gateway"
+				"internal_name": "vpc_flow_log_cloudwatch"
 			}
 		},
 		{
@@ -621,6 +815,42 @@
 			}
 		},
 		{
+			"id": "r-rtb-01114b5b6d59921eb1080289494",
+			"type": "aws_route",
+			"source": {
+				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/eu-west-1/dev/networking/vpc/terraform.tfstate",
+				"namespace": "module.vpc",
+				"internal_name": "private_nat_gateway"
+			}
+		},
+		{
+			"id": "eipalloc-0cc4773d6d6d98965",
+			"type": "aws_eip",
+			"source": {
+				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/eu-west-1/dev/networking/vpc/terraform.tfstate",
+				"namespace": "module.vpc",
+				"internal_name": "nat"
+			}
+		},
+		{
+			"id": "sg-0ab56c1ba939b3313",
+			"type": "aws_default_security_group",
+			"source": {
+				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/eu-west-1/dev/networking/vpc/terraform.tfstate",
+				"namespace": "module.vpc",
+				"internal_name": "this"
+			}
+		},
+		{
+			"id": "nat-05e4f610a2b64933a",
+			"type": "aws_nat_gateway",
+			"source": {
+				"source": "tfstate+s3://logshell-dev-eu-west-1-tf-state/dev/eu-west-1/dev/networking/vpc/terraform.tfstate",
+				"namespace": "module.vpc",
+				"internal_name": "this"
+			}
+		},
+		{
 			"id": "arn:aws:iam::366248715104:policy/atlantis-ci",
 			"type": "aws_iam_policy",
 			"source": {
@@ -630,15 +860,19 @@
 			}
 		},
 		{
-			"id": "devel-ec2-arn:aws:iam::aws:policy/AmazonEC2ReadOnlyAccess",
-			"type": "aws_iam_policy_attachment"
-		},
-		{
 			"id": "devel-ec2-arn:aws:iam::aws:policy/AmazonRoute53FullAccess",
 			"type": "aws_iam_policy_attachment"
 		},
 		{
+			"id": "devel-ec2-arn:aws:iam::aws:policy/AmazonS3ReadOnlyAccess",
+			"type": "aws_iam_policy_attachment"
+		},
+		{
 			"id": "devel-ec2-arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryFullAccess",
+			"type": "aws_iam_policy_attachment"
+		},
+		{
+			"id": "devel-ec2-arn:aws:iam::aws:policy/AmazonEC2ReadOnlyAccess",
 			"type": "aws_iam_policy_attachment"
 		},
 		{
@@ -686,8 +920,24 @@
 			"type": "aws_ebs_snapshot"
 		},
 		{
+			"id": "arn:aws:iam::366248715104:policy/fuckawsiam",
+			"type": "aws_iam_policy"
+		},
+		{
 			"id": "arn:aws:iam::366248715104:policy/service-role/AccessAnalyzerMonitorServicePolicy_G5D7VOQO4T",
 			"type": "aws_iam_policy"
+		},
+		{
+			"id": "arn:aws:iam::366248715104:policy/service-role/AccessAnalyzerMonitorServicePolicy_JDLO05AEJR",
+			"type": "aws_iam_policy"
+		},
+		{
+			"id": "arn:aws:iam::366248715104:policy/service-role/CloudTrailPolicyForCloudWatchLogs_f3e15fc0-87ad-4fcd-9121-43569e7fd2a2",
+			"type": "aws_iam_policy"
+		},
+		{
+			"id": "AWSServiceRoleForAccessAnalyzer-arn:aws:iam::aws:policy/aws-service-role/AccessAnalyzerServiceRolePolicy",
+			"type": "aws_iam_policy_attachment"
 		},
 		{
 			"id": "AWSServiceRoleForECS-arn:aws:iam::aws:policy/aws-service-role/AmazonECSServiceRolePolicy",
@@ -702,8 +952,20 @@
 			"type": "aws_iam_policy_attachment"
 		},
 		{
+			"id": "AccessAnalyzerMonitorServiceRole_DWRL8J6H10-arn:aws:iam::366248715104:policy/service-role/AccessAnalyzerMonitorServicePolicy_JDLO05AEJR",
+			"type": "aws_iam_policy_attachment"
+		},
+		{
 			"id": "AccessAnalyzerMonitorServiceRole_Y7OKFCWMPX-arn:aws:iam::366248715104:policy/service-role/AccessAnalyzerMonitorServicePolicy_G5D7VOQO4T",
 			"type": "aws_iam_policy_attachment"
+		},
+		{
+			"id": "fuckyou-arn:aws:iam::366248715104:policy/service-role/CloudTrailPolicyForCloudWatchLogs_f3e15fc0-87ad-4fcd-9121-43569e7fd2a2",
+			"type": "aws_iam_policy_attachment"
+		},
+		{
+			"id": "AccessAnalyzerMonitorServiceRole_DWRL8J6H10",
+			"type": "aws_iam_role"
 		},
 		{
 			"id": "AccessAnalyzerMonitorServiceRole_Y7OKFCWMPX",
@@ -715,6 +977,10 @@
 		},
 		{
 			"id": "flowlogsRole",
+			"type": "aws_iam_role"
+		},
+		{
+			"id": "fuckyou",
 			"type": "aws_iam_role"
 		},
 		{
@@ -746,19 +1012,1055 @@
 			"type": "aws_network_acl_rule"
 		},
 		{
-			"id": "aws-athena-query-results-366248715104-eu-west-1",
+			"id": "aws-cloudtrail-logs-366248715104-be9149c0",
 			"type": "aws_s3_bucket"
 		},
 		{
 			"id": "logshell-dev-eu-west-1-tf-state",
 			"type": "aws_s3_bucket"
+		},
+		{
+			"id": "aws-cloudtrail-logs-366248715104-be9149c0",
+			"type": "aws_s3_bucket_policy"
 		},
 		{
 			"id": "logshell-dev-eu-west-1-tf-state",
 			"type": "aws_s3_bucket_policy"
 		},
 		{
+			"id": "sg-0060ac06abc318b89",
+			"type": "aws_security_group"
+		},
+		{
+			"id": "sg-00a56f8caac81901c",
+			"type": "aws_security_group"
+		},
+		{
+			"id": "sg-00b842abcbc1a354f",
+			"type": "aws_security_group"
+		},
+		{
+			"id": "sg-01375667567096834",
+			"type": "aws_security_group"
+		},
+		{
+			"id": "sg-0161d473358ce0f66",
+			"type": "aws_security_group"
+		},
+		{
+			"id": "sg-01cb6bfad2964eab9",
+			"type": "aws_security_group"
+		},
+		{
+			"id": "sg-01d284c46a3955e78",
+			"type": "aws_security_group"
+		},
+		{
+			"id": "sg-0224cb228ef671713",
+			"type": "aws_security_group"
+		},
+		{
+			"id": "sg-0264e802a6c9ec272",
+			"type": "aws_security_group"
+		},
+		{
+			"id": "sg-027d873605aca5991",
+			"type": "aws_security_group"
+		},
+		{
+			"id": "sg-0290cdaf8c9823845",
+			"type": "aws_security_group"
+		},
+		{
+			"id": "sg-02b20b13163a36512",
+			"type": "aws_security_group"
+		},
+		{
+			"id": "sg-02c2c88731da5e187",
+			"type": "aws_security_group"
+		},
+		{
+			"id": "sg-033702da8ea7aa03a",
+			"type": "aws_security_group"
+		},
+		{
+			"id": "sg-03f1bde6e93a22da0",
+			"type": "aws_security_group"
+		},
+		{
+			"id": "sg-0429395ae4e5a49e7",
+			"type": "aws_security_group"
+		},
+		{
+			"id": "sg-044c6ed2a21698d76",
+			"type": "aws_security_group"
+		},
+		{
+			"id": "sg-045e3e58d7c6d477d",
+			"type": "aws_security_group"
+		},
+		{
+			"id": "sg-048e41b05c705bd58",
+			"type": "aws_security_group"
+		},
+		{
+			"id": "sg-04bbccfa13856606a",
+			"type": "aws_security_group"
+		},
+		{
+			"id": "sg-04ca776cb42640f95",
+			"type": "aws_security_group"
+		},
+		{
+			"id": "sg-05042688990788ef7",
+			"type": "aws_security_group"
+		},
+		{
+			"id": "sg-0548b0a3f58b2ae00",
+			"type": "aws_security_group"
+		},
+		{
+			"id": "sg-05683e00c0df347f9",
+			"type": "aws_security_group"
+		},
+		{
+			"id": "sg-05760b4d448c29660",
+			"type": "aws_security_group"
+		},
+		{
+			"id": "sg-058393436425c0983",
+			"type": "aws_security_group"
+		},
+		{
+			"id": "sg-059c50bf22a1c1a1b",
+			"type": "aws_security_group"
+		},
+		{
+			"id": "sg-05abc4df90ecf6cbb",
+			"type": "aws_security_group"
+		},
+		{
+			"id": "sg-05c91538509140072",
+			"type": "aws_security_group"
+		},
+		{
+			"id": "sg-05e454886c50e1350",
+			"type": "aws_security_group"
+		},
+		{
+			"id": "sg-060cdab4ffd8ae47a",
+			"type": "aws_security_group"
+		},
+		{
+			"id": "sg-06279a839447e38f3",
+			"type": "aws_security_group"
+		},
+		{
+			"id": "sg-064ed8cf6f13c9f7d",
+			"type": "aws_security_group"
+		},
+		{
+			"id": "sg-069bb1dd979a73830",
+			"type": "aws_security_group"
+		},
+		{
+			"id": "sg-06b4e25e1d595d0da",
+			"type": "aws_security_group"
+		},
+		{
+			"id": "sg-06f33b5fb03ef30b0",
+			"type": "aws_security_group"
+		},
+		{
+			"id": "sg-0706dacc55752f447",
+			"type": "aws_security_group"
+		},
+		{
+			"id": "sg-073d44a78294685fe",
+			"type": "aws_security_group"
+		},
+		{
+			"id": "sg-075d744721dea3f81",
+			"type": "aws_security_group"
+		},
+		{
+			"id": "sg-08300c8da1bcf9705",
+			"type": "aws_security_group"
+		},
+		{
+			"id": "sg-085c1cd20c6727ce1",
+			"type": "aws_security_group"
+		},
+		{
+			"id": "sg-0867cfdbee2265997",
+			"type": "aws_security_group"
+		},
+		{
+			"id": "sg-087440cabe5e557f4",
+			"type": "aws_security_group"
+		},
+		{
+			"id": "sg-088137debc00008a8",
+			"type": "aws_security_group"
+		},
+		{
+			"id": "sg-08a3e36234b619d0c",
+			"type": "aws_security_group"
+		},
+		{
+			"id": "sg-08a44e54d78fafc77",
+			"type": "aws_security_group"
+		},
+		{
+			"id": "sg-08ba442c281eef249",
+			"type": "aws_security_group"
+		},
+		{
+			"id": "sg-08d73aec59753b9e4",
+			"type": "aws_security_group"
+		},
+		{
+			"id": "sg-08d854110e3783f55",
+			"type": "aws_security_group"
+		},
+		{
+			"id": "sg-08daedf0904a2bdf9",
+			"type": "aws_security_group"
+		},
+		{
+			"id": "sg-090fbd8b3a0aeb34a",
+			"type": "aws_security_group"
+		},
+		{
+			"id": "sg-0914d3ff657f8060b",
+			"type": "aws_security_group"
+		},
+		{
+			"id": "sg-0999787d3e7107bf5",
+			"type": "aws_security_group"
+		},
+		{
+			"id": "sg-09e52e070d2a95327",
+			"type": "aws_security_group"
+		},
+		{
+			"id": "sg-09e8d3a41abba4da7",
+			"type": "aws_security_group"
+		},
+		{
+			"id": "sg-09f2c8e9b513e5f57",
+			"type": "aws_security_group"
+		},
+		{
+			"id": "sg-0a703d8b99b415d65",
+			"type": "aws_security_group"
+		},
+		{
+			"id": "sg-0a8aaea7b713e2f70",
+			"type": "aws_security_group"
+		},
+		{
+			"id": "sg-0ab7fe7746bc6c8f1",
+			"type": "aws_security_group"
+		},
+		{
+			"id": "sg-0af715d542bda56cc",
+			"type": "aws_security_group"
+		},
+		{
+			"id": "sg-0b472a9d25460e986",
+			"type": "aws_security_group"
+		},
+		{
+			"id": "sg-0b5f9ddd332cb30bb",
+			"type": "aws_security_group"
+		},
+		{
+			"id": "sg-0b7f34cd904f0192e",
+			"type": "aws_security_group"
+		},
+		{
+			"id": "sg-0b90513e03d6fc98e",
+			"type": "aws_security_group"
+		},
+		{
+			"id": "sg-0ba51a18bc5d71d86",
+			"type": "aws_security_group"
+		},
+		{
+			"id": "sg-0bb7b3713abeb7cf4",
+			"type": "aws_security_group"
+		},
+		{
+			"id": "sg-0c11a0446dbe7c6d1",
+			"type": "aws_security_group"
+		},
+		{
+			"id": "sg-0cd28f87b5e2f2f50",
+			"type": "aws_security_group"
+		},
+		{
+			"id": "sg-0d5858ff54ee23502",
+			"type": "aws_security_group"
+		},
+		{
+			"id": "sg-0d61c11de81f56b22",
+			"type": "aws_security_group"
+		},
+		{
+			"id": "sg-0d8dcde5b0a3a3a03",
+			"type": "aws_security_group"
+		},
+		{
+			"id": "sg-0d902a3e78184ec0e",
+			"type": "aws_security_group"
+		},
+		{
+			"id": "sg-0db8368063131463d",
+			"type": "aws_security_group"
+		},
+		{
+			"id": "sg-0dc5c3c82e544ee82",
+			"type": "aws_security_group"
+		},
+		{
+			"id": "sg-0e0e3e2ee42bbbe10",
+			"type": "aws_security_group"
+		},
+		{
+			"id": "sg-0e5b49c662ec50244",
+			"type": "aws_security_group"
+		},
+		{
+			"id": "sg-0e671595c794a3e9e",
+			"type": "aws_security_group"
+		},
+		{
+			"id": "sg-0ecbbde5674831e9e",
+			"type": "aws_security_group"
+		},
+		{
+			"id": "sg-0efc8061ec29142c7",
+			"type": "aws_security_group"
+		},
+		{
+			"id": "sg-0f16b82dcd108f718",
+			"type": "aws_security_group"
+		},
+		{
+			"id": "sg-0f29c84f67d58a64f",
+			"type": "aws_security_group"
+		},
+		{
+			"id": "sg-0f4012c7af90c6972",
+			"type": "aws_security_group"
+		},
+		{
+			"id": "sg-0f6ce9cfe28593cce",
+			"type": "aws_security_group"
+		},
+		{
+			"id": "sg-0fd57725848901894",
+			"type": "aws_security_group"
+		},
+		{
+			"id": "sg-0fddca3a339134e56",
+			"type": "aws_security_group"
+		},
+		{
+			"id": "sg-0ff3b28b09a5452e1",
+			"type": "aws_security_group"
+		},
+		{
+			"id": "sgrule-1049329706",
+			"type": "aws_security_group_rule"
+		},
+		{
 			"id": "sgrule-1062517999",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-1123946798",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-1137411280",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-1139686496",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-1179665001",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-1211338902",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-1214668768",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-1216411127",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-130049540",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-1310064320",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-1310214982",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-1318707104",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-1328358699",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-1370856145",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-1383708422",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-1393927551",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-1421564300",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-1476466661",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-1476476666",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-1494141541",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-1520471330",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-1521741950",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-1553832006",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-1565110668",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-1591457698",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-161695906",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-1642821588",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-169105070",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-169994194",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-1750128530",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-1762477913",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-1781812544",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-1785404620",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-1790228919",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-1793354473",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-1803399017",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-1816748420",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-1873448614",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-1894323890",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-1896166059",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-1903023161",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-1911405995",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-1955202035",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-1978026402",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-1986128781",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-2012640205",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-2017447730",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-2082010066",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-2135699980",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-214814311",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-2148789842",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-2229378872",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-2241603844",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-2258226778",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-2264025392",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-2278126954",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-2288714915",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-2290771908",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-2317467717",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-2348526957",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-2352697116",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-2362865816",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-2405454598",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-2424854534",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-2432004938",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-2441199716",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-2448139865",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-2457384284",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-2458397890",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-2476692092",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-2483916893",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-2518121287",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-2531695852",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-2577214032",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-2586317537",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-2592760334",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-2602276201",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-2659032241",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-2663650510",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-2664548916",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-2748052848",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-275360085",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-276629796",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-2770609939",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-2782160818",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-2814922074",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-2824217992",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-285950723",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-2864734243",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-2876057794",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-2940712815",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-2946276183",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-2968754474",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-2974511137",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-3100021203",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-3129800051",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-3150557533",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-3178300050",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-3204526669",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-3213873817",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-3234115449",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-3237791489",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-3238510621",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-3245849722",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-3270405286",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-3329773936",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-3339022476",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-3365555185",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-3369835450",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-3378633420",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-3386067645",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-3470836012",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-349410959",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-3510387293",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-3517936056",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-3533794653",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-3571468035",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-3578390820",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-3606459684",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-3606905802",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-3614518574",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-3622750867",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-3628470187",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-3669118914",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-3673643108",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-3684797889",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-3705275503",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-3765413391",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-3767315751",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-3783784030",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-3792867393",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-3811666992",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-3846493287",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-3894562614",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-3957898372",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-4037469028",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-410063419",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-4102353527",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-4105392359",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-4139399396",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-4141373662",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-414900675",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-4159747473",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-4186845302",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-4192002936",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-420482713",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-4211097583",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-4239020925",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-4277428603",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-4292874881",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-4404605",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-450990657",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-463472587",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-464315457",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-468717947",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-507137553",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-580689458",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-634877570",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-652495185",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-655827495",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-671065485",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-701559903",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-739737966",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-756405331",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-78440171",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-815558036",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-832119866",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-875033018",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-886684997",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-906944340",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-937976525",
+			"type": "aws_security_group_rule"
+		},
+		{
+			"id": "sgrule-961298279",
 			"type": "aws_security_group_rule"
 		}
 	],
@@ -766,10 +2068,34 @@
 		{
 			"id": "eipassoc-002801c2949d8c12e",
 			"type": "aws_eip_association"
+		},
+		{
+			"id": "athens-ecs_task_execution-arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy",
+			"type": "aws_iam_policy_attachment"
+		},
+		{
+			"id": "devel-ec2-arn:aws:iam::aws:policy/ReadOnlyAccess",
+			"type": "aws_iam_policy_attachment"
+		},
+		{
+			"id": "driftctl-slack-ecs-task-execution-role-arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy",
+			"type": "aws_iam_policy_attachment"
+		},
+		{
+			"id": "ecs_task_execution-arn:aws:iam::aws:policy/ReadOnlyAccess",
+			"type": "aws_iam_policy_attachment"
+		},
+		{
+			"id": "ecs_task_execution-arn:aws:iam::aws:policy/ReadOnlyAccess",
+			"type": "aws_iam_policy_attachment"
+		},
+		{
+			"id": "ecs_task_execution-arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy",
+			"type": "aws_iam_policy_attachment"
 		}
 	],
 	"differences": null,
-	"coverage": 76,
+	"coverage": 27,
 	"alerts": {
 		"": [
 			{

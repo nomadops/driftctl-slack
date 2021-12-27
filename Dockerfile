@@ -28,4 +28,4 @@ RUN apk add --no-cache \
   awscli \
   && rm -rf /var/cache/apk/*
 RUN aws --version
-CMD /usr/local/bin/driftctl-slack.sh
+CMD /usr/local/bin/driftctl-slack

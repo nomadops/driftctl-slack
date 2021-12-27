@@ -6,35 +6,53 @@
 # driftctl
 
 ```go
-import "github.com/logshell/driftctl-slack/driftctl"
+import "github.com/nomadops/driftctl-slack/driftctl"
 ```
 
 ## Index
 
-- [func ScanOutput(driftctlJSON []byte) (map[string]interface{}, error)](<#func-scanoutput>)
-- [func ScanSummary(driftctlJSON []byte) (map[string]int, error)](<#func-scansummary>)
+- [func Log(summary map[string]int)](<#func-log>)
+- [func Run(bucket string, driftctlJSON string) (output []byte, err error)](<#func-run>)
+- [func ScanOutput(report []byte) (map[string]interface{}, error)](<#func-scanoutput>)
+- [func ScanSummary(report []byte) (map[string]int, error)](<#func-scansummary>)
 - [type Scan](<#type-scan>)
 
 
-## func [ScanOutput](<https://github.com/nomadops/driftctl-slack/blob/main/driftctl/driftctl.go#L46>)
+## func [Log](<https://github.com/nomadops/driftctl-slack/blob/main/driftctl/driftctl.go#L81>)
 
 ```go
-func ScanOutput(driftctlJSON []byte) (map[string]interface{}, error)
+func Log(summary map[string]int)
 ```
 
-ScanOutput returns a map\[string\]interface\{\} from \`driftctl scan \-o json://file\`
+Log function calls zerolog to log the output of driftctl scan to stdout for CloudWatch parsing\.
 
-## func [ScanSummary](<https://github.com/nomadops/driftctl-slack/blob/main/driftctl/driftctl.go#L62>)
+## func [Run](<https://github.com/nomadops/driftctl-slack/blob/main/driftctl/driftctl.go#L93>)
 
 ```go
-func ScanSummary(driftctlJSON []byte) (map[string]int, error)
+func Run(bucket string, driftctlJSON string) (output []byte, err error)
 ```
 
-ScanSummary returns a map\[string\]string of the Summary section from \`driftctl scan \-o json://file\`
+Run executs the driftctl scan command and returns the output as a byte slice\.
 
-## type [Scan](<https://github.com/nomadops/driftctl-slack/blob/main/driftctl/driftctl.go#L9-L43>)
+## func [ScanOutput](<https://github.com/nomadops/driftctl-slack/blob/main/driftctl/driftctl.go#L49>)
 
-Scan struct is the json output of \`driftctl scan\`
+```go
+func ScanOutput(report []byte) (map[string]interface{}, error)
+```
+
+ScanOutput returns a map\[string\]interface\{\} from \`driftctl scan \-o json://file\`\.
+
+## func [ScanSummary](<https://github.com/nomadops/driftctl-slack/blob/main/driftctl/driftctl.go#L65>)
+
+```go
+func ScanSummary(report []byte) (map[string]int, error)
+```
+
+ScanSummary returns a map\[string\]string of the Summary section from \`driftctl scan \-o json://file\`\.
+
+## type [Scan](<https://github.com/nomadops/driftctl-slack/blob/main/driftctl/driftctl.go#L12-L46>)
+
+Scan struct is the json output of \`driftctl scan\`\.
 
 ```go
 type Scan struct {

@@ -2,10 +2,13 @@ package driftctl
 
 import (
 	"encoding/json"
-	"log"
+	"fmt"
+	"os/exec"
+
+	"github.com/rs/zerolog/log"
 )
 
-// Scan struct is the json output of `driftctl scan`
+// Scan struct is the json output of `driftctl scan`.
 type Scan struct {
 	Alerts struct {
 		_ []struct {
@@ -42,12 +45,12 @@ type Scan struct {
 	} `json:"unmanaged"`
 }
 
-// ScanOutput returns a map[string]interface{} from `driftctl scan -o json://file`
-func ScanOutput(driftctlJSON []byte) (map[string]interface{}, error) {
+// ScanOutput returns a map[string]interface{} from `driftctl scan -o json://file`.
+func ScanOutput(report []byte) (map[string]interface{}, error) {
 	var scan Scan
-	err := json.Unmarshal(driftctlJSON, &scan)
+	err := json.Unmarshal(report, &scan)
 	if err != nil {
-		log.Fatal("Error when unmarshalling: ", err)
+		log.Fatal().Msg("Error when unmarshalling &scan ")
 		return nil, err
 	}
 
@@ -58,12 +61,12 @@ func ScanOutput(driftctlJSON []byte) (map[string]interface{}, error) {
 	return output, nil
 }
 
-// ScanSummary returns a map[string]string of the Summary section from `driftctl scan -o json://file`
-func ScanSummary(driftctlJSON []byte) (map[string]int, error) {
+// ScanSummary returns a map[string]string of the Summary section from `driftctl scan -o json://file`.
+func ScanSummary(report []byte) (map[string]int, error) {
 	// This all works
-	scanOutput, err := ScanOutput(driftctlJSON)
+	scanOutput, err := ScanOutput(report)
 	if err != nil {
-		log.Fatal("Error when unmarshalling: ", err)
+		log.Fatal().Msg("Error when unmarshalling ScanOutput(report)")
 		return nil, err
 	}
 
@@ -72,4 +75,33 @@ func ScanSummary(driftctlJSON []byte) (map[string]int, error) {
 	json.Unmarshal(foo, &summary)
 
 	return summary, nil
+}
+
+// Log function calls zerolog to log the output of driftctl scan to stdout for CloudWatch parsing.
+func Log(summary map[string]int) {
+	log.Info().
+		Str("service", "driftctl-slack").
+		Int("total_resources", summary["total_resources"]).
+		Int("total_changed", summary["total_changed"]).
+		Int("total_unmanaged", summary["total_unmanaged"]).
+		Int("total_missing", summary["total_missing"]).
+		Int("total_managed", summary["total_managed"]).
+		Msg("Driftctl scan summary")
+}
+
+// Run executs the driftctl scan command and returns the output as a byte slice.
+func Run(bucket string, driftctlJSON string) (output []byte, err error) {
+	tfstates := fmt.Sprintf("tfstate+s3://%v/**/*.tfstate", bucket)
+	target := fmt.Sprintf("json://%v", driftctlJSON)
+	cmd := exec.Command("driftctl", "scan", "--quiet", "--from", tfstates, "-o", target)
+
+	stdout, err := cmd.Output()
+	log.Info().Msg(string(stdout))
+	// This might be the wrong approach. Driftctl will return an error if there are changes, which will be every change without a really well-defined driftignore.
+	if err != nil {
+		log.Info().Msg("Driftctl scan detected drift.")
+	}
+
+	log.Info().Msg(string(stdout))
+	return stdout, nil
 }
