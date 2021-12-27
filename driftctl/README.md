@@ -11,20 +11,11 @@ import "github.com/nomadops/driftctl-slack/driftctl"
 
 ## Index
 
-- [func Log(summary map[string]int)](<#func-log>)
 - [func Run(bucket string, driftctlJSON string) (output []byte, err error)](<#func-run>)
 - [func ScanOutput(report []byte) (map[string]interface{}, error)](<#func-scanoutput>)
 - [func ScanSummary(report []byte) (map[string]int, error)](<#func-scansummary>)
 - [type Scan](<#type-scan>)
 
-
-## func [Log](<https://github.com/nomadops/driftctl-slack/blob/main/driftctl/driftctl.go#L81>)
-
-```go
-func Log(summary map[string]int)
-```
-
-Log function calls zerolog to log the output of driftctl scan to stdout for CloudWatch parsing\.
 
 ## func [Run](<https://github.com/nomadops/driftctl-slack/blob/main/driftctl/driftctl.go#L93>)
 

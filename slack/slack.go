@@ -86,13 +86,14 @@ func SendSummary(slackToken string, slackChannel string, slackMessage map[string
 	return nil
 }
 
-// func Log(summary map[string]int) {
-// 	log.Info().
-// 		Str("service", "driftctl-slack").
-// 		Int("total_resources", summary["total_resources"]).
-// 		Int("total_changed", summary["total_changed"]).
-// 		Int("total_unmanaged", summary["total_unmanaged"]).
-// 		Int("total_missing", summary["total_missing"]).
-// 		Int("total_managed", summary["total_managed"]).
-// 		Msg("Driftctl scan summary")
-// }
+// Log sends formatted summary to `#gitops` channel
+func Log(summary map[string]int) {
+	log.Info().
+		Str("service", "driftctl-slack").
+		Int("total_resources", summary["total_resources"]).
+		Int("total_changed", summary["total_changed"]).
+		Int("total_unmanaged", summary["total_unmanaged"]).
+		Int("total_missing", summary["total_missing"]).
+		Int("total_managed", summary["total_managed"]).
+		Msg("Driftctl scan summary")
+}
