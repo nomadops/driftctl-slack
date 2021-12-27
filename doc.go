@@ -1,9 +1,7 @@
 // driftctl-scan will perform three actions:
 //
 // * Execute `driftctl scan` against terraform statefiles in the specified STATE_BUCKET variable
-//
 // * Send a summary of the scan to the specified Slack channel
-//
 // * Copy the driftctl scanfile to the specified S3 bucket
 //
 //
