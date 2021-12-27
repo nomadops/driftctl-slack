@@ -15,6 +15,6 @@ repos:
     hooks:
     - id: shellcheck
   - repo: https://github.com/turo/pre-commit-hooks
-    rev: v2.3.1  # You may version pin this if desired
+    rev: v2.5.0  # You may version pin this if desired
     hooks:
     - id: gomarkdoc
