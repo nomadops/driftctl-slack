@@ -30,7 +30,7 @@ func main() {
 		log.Fatal().Msg("Environment variable DRIFTCTL_JSON does not exist")
 	}
 
-	// get scan bucket name from the environment
+	// get scan bucket name from the environment.
 	scanBucket, err := os.LookupEnv("SCAN_BUCKET")
 	if !err {
 		log.Fatal().Msg("Environment variable SCAN_BUCKET does not exist")

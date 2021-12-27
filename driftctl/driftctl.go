@@ -77,7 +77,7 @@ func ScanSummary(report []byte) (map[string]int, error) {
 	return summary, nil
 }
 
-// Run executs the driftctl scan command and returns the output as a byte slice.
+// Run executs the driftctl scan command and returns the output as a byte slice
 func Run(bucket string, driftctlJSON string) (err error) {
 	tfstates := fmt.Sprintf("tfstate+s3://%v/**/*.tfstate", bucket)
 	target := fmt.Sprintf("json://%v", driftctlJSON)
