@@ -1,4 +1,4 @@
-#output: "{{.Dir}}/README.md"
+output: "{{.Dir}}/README.md"
 header: |+
   [![GitHub Actions](https://github.com/nomadops/driftctl-slack/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/nomadops/driftctl-slack/actions/workflows/ci.yml)
 
