@@ -36,7 +36,7 @@ func main() {
 		log.Fatal().Msg("Environment variable SCAN_BUCKET does not exist")
 	}
 
-	// get state bucket name from the environment
+	// get state bucket name from the environment.
 	stateBucket, err := os.LookupEnv("STATE_BUCKET")
 	if !err {
 		log.Fatal().Msg("Environment variable STATE_BUCKET does not exist")
