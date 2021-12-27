@@ -7,7 +7,8 @@ header: |+
   We've provided a [Terraform module](https://github.com/nomadops/terraform-aws-driftctl-slack) for deployment as a scheduleds ECS Fargate task. 
   `driftctl-slack` will execute driftctl-scan, send a summary of the report to a slack channel and then copy the report to a S3 bucket.
 
-  driftctl will be run by the golang wrapper with the following options:
+  `driftctl scan` will be executed as the following command:
+
   ```bash
   	$ /usr/local/bin/driftctl scan --quiet --from tfstate+s3://"${STATE_BUCKET}"/**/*.tfstate -o json://"${DRIFTCTL_JSON}"
   ````
