@@ -37,16 +37,112 @@ Output is sent to stdout in json format for easy log processing.
 
 driftctl-slack is licensed under Apache License 2.0.
 
-
-# driftctl\-slack
+# driftctl
 
 ```go
-import "github.com/nomadops/driftctl-slack"
+import "command-line-arguments"
 ```
 
 ## Index
 
+- [func Run(bucket string, driftctlJSON string) (err error)](<#func-run>)
+- [func ScanSummary(report []byte) (map[string]int, error)](<#func-scansummary>)
+- [type Scan](<#type-scan>)
 
+
+## func [Run](<https://github.com/nomadops/driftctl-slack/blob/main/driftctl/driftctl.go#L81>)
+
+```go
+func Run(bucket string, driftctlJSON string) (err error)
+```
+
+Run executs the driftctl scan command and returns the output as a byte slice\.
+
+## func [ScanSummary](<https://github.com/nomadops/driftctl-slack/blob/main/driftctl/driftctl.go#L65>)
+
+```go
+func ScanSummary(report []byte) (map[string]int, error)
+```
+
+ScanSummary returns a map\[string\]string of the Summary section from \`driftctl scan \-o json://file\`\.
+
+## type [Scan](<https://github.com/nomadops/driftctl-slack/blob/main/driftctl/driftctl.go#L12-L46>)
+
+Scan struct is the json output of \`driftctl scan\`\.
+
+```go
+type Scan struct {
+    Alerts struct {
+        // contains filtered or unexported fields
+    }   `json:"alerts"`
+    Coverage    int64       `json:"coverage"`
+    Differences interface{} `json:"differences"`
+    Managed     []struct {
+        ID     string `json:"id"`
+        Source struct {
+            InternalName string `json:"internal_name"`
+            Namespace    string `json:"namespace"`
+            Source       string `json:"source"`
+        }   `json:"source"`
+        Type string `json:"type"`
+    }   `json:"managed"`
+    Missing []struct {
+        ID   string `json:"id"`
+        Type string `json:"type"`
+    }   `json:"missing"`
+    ProviderName    string `json:"provider_name"`
+    ProviderVersion string `json:"provider_version"`
+    Summary         struct {
+        TotalChanged   int64 `json:"total_changed"`
+        TotalManaged   int64 `json:"total_managed"`
+        TotalMissing   int64 `json:"total_missing"`
+        TotalResources int64 `json:"total_resources"`
+        TotalUnmanaged int64 `json:"total_unmanaged"`
+    }   `json:"summary"`
+    Unmanaged []struct {
+        ID   string `json:"id"`
+        Type string `json:"type"`
+    }   `json:"unmanaged"`
+}
+```
+
+# s3
+
+```go
+import "command-line-arguments"
+```
+
+## Index
+
+- [func PutFile(c context.Context, api putObjectAPI, input *s3.PutObjectInput) (*s3.PutObjectOutput, error)](<#func-putfile>)
+
+
+## func [PutFile](<https://github.com/nomadops/driftctl-slack/blob/main/s3/s3.go#L27>)
+
+```go
+func PutFile(c context.Context, api putObjectAPI, input *s3.PutObjectInput) (*s3.PutObjectOutput, error)
+```
+
+PutFile uploads a file to an Amazon Simple Storage Service \(Amazon S3\) bucket Inputs: c is the context of the method call\, which includes the AWS Region api is the interface that defines the method call input defines the input arguments to the service call\. Output: If success\, a PutObjectOutput object containing the result of the service call and nil Otherwise\, nil and an error from the call to PutObject
+
+# driftslack
+
+```go
+import "command-line-arguments"
+```
+
+## Index
+
+- [func SendSummary(token string, channel string, message map[string]int) error](<#func-sendsummary>)
+
+
+## func [SendSummary](<https://github.com/nomadops/driftctl-slack/blob/main/slack/slack.go#L67>)
+
+```go
+func SendSummary(token string, channel string, message map[string]int) error
+```
+
+SendSummary sends formatted summary to \`\#gitops\` channel\.
 
 
 
