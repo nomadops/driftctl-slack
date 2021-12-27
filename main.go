@@ -92,7 +92,7 @@ func main() {
 		Body:   content,
 	}
 
-	// Create a new S3 client.
+	// Create a new S3 client
 	cfg, err1 := config.LoadDefaultConfig(context.TODO())
 	if err1 != nil {
 		log.Fatal().

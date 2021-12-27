@@ -14,6 +14,8 @@ header: |+
   ````
 
   Usage:
+
+  `driftctl-slack` requires three environment variables to bet set: `SCAN_BUCKET`, `STATE_BUCKET`, `TOKEN` and `CHANNEL`
   ```bash
   $ export SCAN_BUCKET=my-scan-bucket \
     STATE_BUCKET=my-tf-state-bucket \
@@ -21,6 +23,8 @@ header: |+
     CHANNEL="#gitops"
   $ driftctl-slack
   ```
+ 
+  Output is sent to stdout in json format for easy log processing. 
 
   ```json
   {"level":"info","service":"driftctl","time":"2021-12-27T14:49:17Z"}
