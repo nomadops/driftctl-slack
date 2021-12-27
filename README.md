@@ -6,7 +6,7 @@
 # driftctl\-slack
 
 ```go
-import "github.com/logshell/driftctl-slack"
+import "github.com/nomadops/driftctl-slack"
 ```
 
 ## Index

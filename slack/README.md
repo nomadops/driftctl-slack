@@ -6,7 +6,7 @@
 # driftslack
 
 ```go
-import "github.com/logshell/driftctl-slack/slack"
+import "github.com/nomadops/driftctl-slack/slack"
 ```
 
 ## Index
@@ -14,7 +14,7 @@ import "github.com/logshell/driftctl-slack/slack"
 - [func SendSummary(slackToken string, slackChannel string, slackMessage map[string]int) error](<#func-sendsummary>)
 
 
-## func [SendSummary](<https://github.com/nomadops/driftctl-slack/blob/main/slack/slack.go#L68>)
+## func [SendSummary](<https://github.com/nomadops/driftctl-slack/blob/main/slack/slack.go#L67>)
 
 ```go
 func SendSummary(slackToken string, slackChannel string, slackMessage map[string]int) error

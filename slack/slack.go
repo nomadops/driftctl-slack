@@ -1,11 +1,10 @@
 package driftslack
 
 import (
-	"fmt"
-	"log"
 	"strconv"
 	"strings"
 
+	"github.com/rs/zerolog/log"
 	"github.com/slack-go/slack"
 )
 
@@ -73,16 +72,27 @@ func SendSummary(slackToken string, slackChannel string, slackMessage map[string
 	attachment := slack.Attachment{}
 
 	attachment.Blocks = msg.Blocks
-	channelID, timestamp, err := api.PostMessage(
+	_, _, err := api.PostMessage(
 		slackChannel,
 		slack.MsgOptionAttachments(attachment),
 		slack.MsgOptionText(string("*driftctl scan report*"), false))
 	if err != nil {
-		log.Fatal("Error posting message to slack.", err)
+		log.Fatal().Msg("Error posting message to slack.")
 		return err
 	}
 
-	fmt.Printf("Message successfully sent to channel %s at %s\n", channelID, timestamp)
+	log.Info().Str("channel", slackChannel).Msg("Message successfully sent to slack.")
 
 	return nil
 }
+
+// func Log(summary map[string]int) {
+// 	log.Info().
+// 		Str("service", "driftctl-slack").
+// 		Int("total_resources", summary["total_resources"]).
+// 		Int("total_changed", summary["total_changed"]).
+// 		Int("total_unmanaged", summary["total_unmanaged"]).
+// 		Int("total_missing", summary["total_missing"]).
+// 		Int("total_managed", summary["total_managed"]).
+// 		Msg("Driftctl scan summary")
+// }
