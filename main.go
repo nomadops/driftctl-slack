@@ -8,9 +8,9 @@ import (
 	"github.com/aws/aws-sdk-go-v2/config"
 	"github.com/aws/aws-sdk-go-v2/service/s3"
 	"github.com/aws/aws-sdk-go/aws"
-	"github.com/nomadops/driftctl-slack/driftctl"
-	drifts3 "github.com/nomadops/driftctl-slack/s3"
-	driftslack "github.com/nomadops/driftctl-slack/slack"
+	"github.com/nomadops/driftctl-slack/pkg/driftctl"
+	drifts3 "github.com/nomadops/driftctl-slack/pkg/s3"
+	driftslack "github.com/nomadops/driftctl-slack/pkg/slack"
 	"github.com/rs/zerolog"
 	"github.com/rs/zerolog/log"
 )
