@@ -15,7 +15,11 @@ import "github.com/nomadops/driftctl-slack"
 
 driftctl\-scan will perform three actions:
 
-\* Execute \`driftctl scan\` against terraform statefiles in the specified STATE\_BUCKET variable \* Send a summary of the scan to the specified Slack channel \* Copy the driftctl scanfile to the specified S3 bucket
+\* Execute \`driftctl scan\` against terraform statefiles in the specified STATE\_BUCKET variable
+
+\* Send a summary of the scan to the specified Slack channel
+
+\* Copy the driftctl scanfile to the specified S3 bucket
 
 driftctl will be run by the golang wrapper with the following options:
 
