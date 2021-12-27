@@ -15,7 +15,7 @@ $ /usr/local/bin/driftctl scan --quiet --from tfstate+s3://"${STATE_BUCKET}"/**/
 
 Usage:
 
-`driftctl-slack` requires three environment variables to bet set: `SCAN_BUCKET`, `STATE_BUCKET`, `TOKEN` and `CHANNEL`
+driftctl-slack requires three environment variables to bet set: `SCAN_BUCKET`, `STATE_BUCKET`, `TOKEN` and `CHANNEL`
 ```bash
 $ export SCAN_BUCKET=my-scan-bucket \
   STATE_BUCKET=my-tf-state-bucket \
