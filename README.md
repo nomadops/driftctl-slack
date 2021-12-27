@@ -88,7 +88,7 @@ import "github.com/nomadops/driftctl-slack/s3"
 - [func PutFile(c context.Context, api putObjectAPI, input *s3.PutObjectInput) (*s3.PutObjectOutput, error)](<#func-putfile>)
 
 
-## func [PutFile](<https://github.com/nomadops/driftctl-slack/blob/main/s3/s3.go#L30>)
+## func [PutFile](<https://github.com/nomadops/driftctl-slack/blob/main/s3/s3.go#L29>)
 
 ```go
 func PutFile(c context.Context, api putObjectAPI, input *s3.PutObjectInput) (*s3.PutObjectOutput, error)
@@ -96,15 +96,11 @@ func PutFile(c context.Context, api putObjectAPI, input *s3.PutObjectInput) (*s3
 
 ### PutFile uploads a file to an Amazon Simple Storage Service \(Amazon S3\) bucket
 
-Inputs:
+Inputs
 
-```
-c is the context of the method call, which includes the AWS Region
-api is the interface that defines the method call
-input defines the input arguments to the service call.
-```
+:c is the context of the method call\, which includes the AWS Region :api is the interface that defines the method call :input defines the input arguments to the service call\.
 
-Output: If success\, a PutObjectOutput object containing the result of the service call and nil Otherwise\, nil and an error from the call to PutObject
+Output: If success\, a PutObjectOutput object containing the result of the service call and nil\. Otherwise\, nil and an error from the call to PutObject\.
 
 # driftslack
 
