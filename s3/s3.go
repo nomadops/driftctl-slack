@@ -17,6 +17,7 @@ type putObjectAPI interface {
 }
 
 // PutFile uploads a file to an Amazon Simple Storage Service (Amazon S3) bucket
+//
 // Inputs:
 //     c is the context of the method call, which includes the AWS Region
 //     api is the interface that defines the method call
