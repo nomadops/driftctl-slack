@@ -55,28 +55,18 @@ func main() {
 	}
 
 	// Needs better variables
-	content, err1 := driftctl.Run(stateBucket)
+	message, err1 := driftctl.Run(stateBucket)
 	if err1 != nil {
 		log.Fatal().Msg("Error when running driftctl scan")
 	}
 
-	// // Read driftctl scan output file
-	// content, err1 := os.Open(scanReport)
-	// if err1 != nil {
-	// 	log.Fatal().
-	// 		Bool("Error while opening file:", err).
-	// 		Msg("")
-	// }
-	// defer content.Close()
-
-	// bob, _ := ioutil.ReadAll(content)
-	// Get Driftctl scan summary
-	message, err1 := driftctl.ScanSummary(content)
-	if err1 != nil {
-		log.Fatal().
-			Bool("Error when opening file: ", err).
-			Msg("")
-	}
+	//// Get Driftctl scan summary
+	//message, err1 := driftctl.ScanSummary(content)
+	//if err1 != nil {
+	//	log.Fatal().
+	//		Bool("Error when opening file: ", err).
+	//		Msg("")
+	//}
 
 	// Send driftctl scan summary output to slack
 	driftslack.SendSummary(token, channel, message)
