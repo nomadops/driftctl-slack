@@ -113,5 +113,3 @@ func main() {
 		Str("VersionId", *putOutput.VersionId).
 		Msg("Report uploaded to S3")
 }
-
-//
