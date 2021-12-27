@@ -25,7 +25,7 @@ type putObjectAPI interface {
 //		input defines the input arguments to the service call.
 //
 // Output:
-// If success, a PutObjectOutput object containing the result of the service call and nil. Otherwise, nil and an error from the call to PutObject.
+//		If success, a PutObjectOutput object containing the result of the service call and nil. Otherwise, nil and an error from the call to PutObject.
 func PutFile(c context.Context, api putObjectAPI, input *s3.PutObjectInput) (*s3.PutObjectOutput, error) {
 	return api.PutObject(c, input)
 }
