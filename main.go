@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"encoding/json"
 	"os"
 	"strings"
 
@@ -60,14 +61,6 @@ func main() {
 		log.Fatal().Msg("Error when running driftctl scan")
 	}
 
-	//// Get Driftctl scan summary
-	//message, err1 := driftctl.ScanSummary(content)
-	//if err1 != nil {
-	//	log.Fatal().
-	//		Bool("Error when opening file: ", err).
-	//		Msg("")
-	//}
-
 	// Send driftctl scan summary output to slack
 	driftslack.SendSummary(token, channel, message)
 	if !err {
@@ -76,7 +69,8 @@ func main() {
 			Msg("")
 	}
 
-	reader := strings.NewReader(string(content))
+	harry, _ := json.Marshal(message)
+	reader := strings.NewReader(string(harry))
 	input := &s3.PutObjectInput{
 		Bucket: aws.String(scanBucket),
 		Key:    aws.String(scanReport),
