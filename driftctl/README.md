@@ -22,7 +22,7 @@ import "github.com/nomadops/driftctl-slack/driftctl"
 func Run(bucket string, driftctlJSON string) (err error)
 ```
 
-Run executs the driftctl scan command and returns the output as a byte slice
+Run executs the driftctl scan command and returns the output as a byte slice\.
 
 ## func [ScanSummary](<https://github.com/nomadops/driftctl-slack/blob/main/driftctl/driftctl.go#L65>)
 

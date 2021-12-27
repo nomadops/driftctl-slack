@@ -1,0 +1,3 @@
+// bob
+// foo
+package main

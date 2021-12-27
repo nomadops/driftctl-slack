@@ -16,7 +16,7 @@ import (
 )
 
 func main() {
-	// Apply zerolog global level, this will stop zerolog from logging any debug messages
+	// Apply zerolog global level, this will stop zerolog from logging any debug messages.
 	debug := false
 	// Apply log level in the beginning of the application
 	zerolog.SetGlobalLevel(zerolog.InfoLevel)
