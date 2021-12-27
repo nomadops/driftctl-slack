@@ -19,9 +19,9 @@ COPY --from=builder /app/driftctl-slack /usr/local/bin/driftctl-slack
 COPY --from=builder /app/driftctl.app /usr/local/bin/driftctl
 RUN chmod +x   /usr/local/bin/driftctl-slack /usr/local/bin/driftctl 
 
-RUN apk add --no-cache \
-  python3 \
-  py3-pip \
-  && pip3 install --upgrade pip \
-  && rm -rf /var/cache/apk/*
+# RUN apk add --no-cache \
+#   python3 \
+#   py3-pip \
+#   && pip3 install --upgrade pip \
+#   && rm -rf /var/cache/apk/*
 CMD /usr/local/bin/driftctl-slack
