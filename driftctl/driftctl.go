@@ -78,9 +78,9 @@ func ScanSummary(report []byte) (map[string]int, error) {
 }
 
 // Run executs the driftctl scan command and returns the output as a byte slice.
-func Run(bucket string, scanReport string) (err error) {
+func Run(bucket string, driftctlJSON string) (err error) {
 	tfstates := fmt.Sprintf("tfstate+s3://%v/**/*.tfstate", bucket)
-	target := fmt.Sprintf("json://%v", scanReport)
+	target := fmt.Sprintf("json://%v", driftctlJSON)
 	cmd := exec.Command("driftctl", "scan", "--quiet", "--from", tfstates, "-o", target)
 
 	stdout, err := cmd.Output()
