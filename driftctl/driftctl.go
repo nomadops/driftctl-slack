@@ -77,17 +77,17 @@ func ScanSummary(report []byte) (map[string]int, error) {
 	return summary, nil
 }
 
-// Log function calls zerolog to log the output of driftctl scan to stdout for CloudWatch parsing.
-func Log(summary map[string]int) {
-	log.Info().
-		Str("service", "driftctl-slack").
-		Int("total_resources", summary["total_resources"]).
-		Int("total_changed", summary["total_changed"]).
-		Int("total_unmanaged", summary["total_unmanaged"]).
-		Int("total_missing", summary["total_missing"]).
-		Int("total_managed", summary["total_managed"]).
-		Msg("Driftctl scan summary")
-}
+// // Log function calls zerolog to log the output of driftctl scan to stdout for CloudWatch parsing.
+// func Log(summary map[string]int) {
+// 	log.Info().
+// 		Str("service", "driftctl-slack").
+// 		Int("total_resources", summary["total_resources"]).
+// 		Int("total_changed", summary["total_changed"]).
+// 		Int("total_unmanaged", summary["total_unmanaged"]).
+// 		Int("total_missing", summary["total_missing"]).
+// 		Int("total_managed", summary["total_managed"]).
+// 		Msg("Driftctl scan summary")
+// }
 
 // Run executs the driftctl scan command and returns the output as a byte slice.
 func Run(bucket string, driftctlJSON string) (output []byte, err error) {
