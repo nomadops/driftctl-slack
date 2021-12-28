@@ -14,6 +14,7 @@ import (
 	driftslack "github.com/nomadops/driftctl-slack/pkg/slack"
 	"github.com/rs/zerolog"
 	"github.com/rs/zerolog/log"
+	"github.com/spf13/viper"
 )
 
 func main() {
@@ -26,10 +27,13 @@ func main() {
 	}
 
 	// get driftctl scan output filename from the environment
-	scanReport, err := os.LookupEnv("SCAN_FILE")
-	if !err {
-		log.Fatal().Msg("Environment variable SCAN_FILE does not exist")
-	}
+	viper.BindEnv("SCAN_FILE")
+	scanReport := viper.GetString("SCAN_FILE")
+
+	//scanReport, err := os.LookupEnv("SCAN_FILE")
+	//if !err {
+	//	log.Fatal().Msg("Environment variable SCAN_FILE does not exist")
+	//}
 
 	// get scan bucket name from the environment.
 	scanBucket, err := os.LookupEnv("SCAN_BUCKET")
