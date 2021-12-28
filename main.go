@@ -3,7 +3,6 @@ package main
 import (
 	"context"
 	"encoding/json"
-	"os"
 	"strings"
 
 	"github.com/aws/aws-sdk-go-v2/config"
@@ -17,6 +16,32 @@ import (
 	"github.com/spf13/viper"
 )
 
+// Config is a struct that contains the configuration environment for the application.
+type Config struct {
+	scanReport  string `mapstructure:"SCAN_FILE"`
+	scanBucket  string `mapstructure:"SCAN_BUCKET"`
+	stateBucket string `mapstructure:"STATE_BUCKET"`
+	channel     string `mapstructure:"CHANNEL"`
+	token       string `mapstructure:"TOKEN"`
+}
+
+// LoadConfig loads the configuration from the environment.
+func LoadConfig() (config Config, err error) {
+	viper.SetConfigType("env")
+	viper.BindEnv("SCAN_FILE")
+	viper.BindEnv("SCAN_BUCKET")
+	viper.BindEnv("STATE_BUCKET")
+	viper.BindEnv("CHANNEL")
+	viper.BindEnv("TOKEN")
+	err = viper.ReadInConfig()
+	if err != nil {
+		return
+	}
+
+	err = viper.Unmarshal(&config)
+	return
+}
+
 func main() {
 	// Apply zerolog global level, this will stop zerolog from logging any debug messages.
 	debug := false
@@ -27,57 +52,33 @@ func main() {
 	}
 
 	// get driftctl scan output filename from the environment
-	viper.BindEnv("SCAN_FILE")
-	scanReport := viper.GetString("SCAN_FILE")
-
-	//scanReport, err := os.LookupEnv("SCAN_FILE")
-	//if !err {
-	//	log.Fatal().Msg("Environment variable SCAN_FILE does not exist")
-	//}
-
-	// get scan bucket name from the environment.
-	scanBucket, err := os.LookupEnv("SCAN_BUCKET")
-	if !err {
-		log.Fatal().Msg("Environment variable SCAN_BUCKET does not exist")
-	}
-
-	// get state bucket name from the environment.
-	stateBucket, err := os.LookupEnv("STATE_BUCKET")
-	if !err {
-		log.Fatal().Msg("Environment variable STATE_BUCKET does not exist")
-	}
-
-	// get slack channel from the environment
-	channel, err := os.LookupEnv("CHANNEL")
-	if !err {
-		log.Fatal().Msg("Environment variable CHANNEL does not exist")
-	}
-
-	// Get slack token from the environment
-	token, err := os.LookupEnv("TOKEN")
-	if !err {
-		log.Fatal().Msg("Environment variable TOKEN does not exist")
+	env, err1 := LoadConfig()
+	if err1 != nil {
+		log.Fatal().
+			Str("service", "driftctl-slack").
+			Msg("Error when loading viper config: ")
+		return
 	}
 
 	// Needs better variables
-	message, err1 := driftctl.Run(stateBucket)
+	message, err1 := driftctl.Run(env.stateBucket)
 	if err1 != nil {
 		log.Fatal().Msg("Error when running driftctl scan")
 	}
 
 	// Send driftctl scan summary output to slack
-	driftslack.SendSummary(token, channel, message)
-	if !err {
+	err := driftslack.SendSummary(env.token, env.channel, message)
+	if err != nil {
 		log.Fatal().
-			Bool("Error when running driftctl.ScanSummary", err).
-			Msg("")
+			Str("service", "driftctl-slack").
+			Msg("Error when running driftctl.ScanSummary")
 	}
 
 	harry, _ := json.Marshal(message)
 	reader := strings.NewReader(string(harry))
 	input := &s3.PutObjectInput{
-		Bucket: aws.String(scanBucket),
-		Key:    aws.String(scanReport),
+		Bucket: aws.String(env.scanBucket),
+		Key:    aws.String(env.scanReport),
 		Body:   reader,
 	}
 
@@ -85,9 +86,10 @@ func main() {
 	cfg, err1 := config.LoadDefaultConfig(context.TODO())
 	if err1 != nil {
 		log.Fatal().
-			Bool("Error when running driftctl.ScanSummary", err).
-			Msg("")
+			Str("service", "driftctl-s3").
+			Msg("Error when running driftctl.ScanSummary")
 	}
+
 	client := s3.NewFromConfig(cfg)
 
 	// Copy the driftctl scan output file to S3 bucket.
