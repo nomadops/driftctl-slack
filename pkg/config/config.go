@@ -28,7 +28,6 @@ func LoadConfig() (env *Config, err error) {
 	v.BindEnv("token", "TOKEN")
 
 	for k, v := range v.AllSettings() {
-		fmt.Println(v)
 		if v == "" {
 			log.Fatal().
 				Str("service", "driftctl-slack").
