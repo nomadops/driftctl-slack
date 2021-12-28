@@ -33,10 +33,10 @@ func LoadConfig() (config Config, err error) {
 	viper.BindEnv("STATE_BUCKET")
 	viper.BindEnv("CHANNEL")
 	viper.BindEnv("TOKEN")
-	err = viper.ReadInConfig()
-	if err != nil {
-		return
-	}
+	// err = viper.ReadInConfig()
+	// if err != nil {
+	// 	return
+	// }
 
 	err = viper.Unmarshal(&config)
 	return
