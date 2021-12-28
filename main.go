@@ -87,15 +87,10 @@ func main() {
 	client := s3.NewFromConfig(cfg)
 
 	// Copy the driftctl scan output file to S3 bucket.
-	putOutput, err1 := drifts3.PutFile(context.TODO(), client, input)
-	if err1 != nil {
+	err2 := drifts3.PutFile(context.TODO(), client, input)
+	if err2 != nil {
 		log.Fatal().
-			Bool("Error when opening file: ", err).
-			Msg("")
+			Str("service", "driftctl-s3").
+			Msg("Error writing file to S3:")
 	}
-
-	log.Info().
-		Str("service", "driftctl-slack").
-		Str("VersionId", *putOutput.VersionId).
-		Msg("Report uploaded to S3")
 }

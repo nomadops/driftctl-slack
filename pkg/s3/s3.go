@@ -6,6 +6,7 @@ import (
 	"context"
 
 	"github.com/aws/aws-sdk-go-v2/service/s3"
+	"github.com/rs/zerolog/log"
 )
 
 // PutObjectAPI defines the interface for the PutObject function.
@@ -27,6 +28,18 @@ type putObjectAPI interface {
 // Output
 //
 // If success, a PutObjectOutput object containing the result of the service call and nil. Otherwise, nil and an error from the call to PutObject.
-func PutFile(c context.Context, api putObjectAPI, input *s3.PutObjectInput) (*s3.PutObjectOutput, error) {
-	return api.PutObject(c, input)
+func PutFile(c context.Context, api putObjectAPI, input *s3.PutObjectInput) error {
+	output, err := api.PutObject(c, input)
+	if err != nil {
+		log.Fatal().
+			Str("service", "driftctl-s3").
+			Msg("Error when writing file: ")
+		return err
+	}
+	log.Info().
+		Str("service", "driftctl-slack").
+		Str("VersionId", *output.VersionId).
+		Msg("Report uploaded to S3")
+
+	return nil
 }
